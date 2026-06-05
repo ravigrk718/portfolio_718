@@ -1,0 +1,68 @@
+[
+  {
+    "id": "elite-strike-boots",
+    "name": "Elite Strike Football Boots",
+    "category": "Football",
+    "price": 129.99,
+    "rating": 4.8,
+    "badge": "Best seller",
+    "accent": "#17b26a",
+    "description": "Lightweight boots built for speed, sharp turns, and all-match comfort.",
+    "stock": 18
+  },
+  {
+    "id": "court-pro-basketball",
+    "name": "Court Pro Basketball",
+    "category": "Basketball",
+    "price": 49.99,
+    "rating": 4.7,
+    "badge": "Indoor/outdoor",
+    "accent": "#f97316",
+    "description": "Durable grip and balanced bounce for training sessions and weekend games.",
+    "stock": 34
+  },
+  {
+    "id": "aero-runner-shoes",
+    "name": "Aero Runner Shoes",
+    "category": "Running",
+    "price": 109.99,
+    "rating": 4.9,
+    "badge": "New arrival",
+    "accent": "#2563eb",
+    "description": "Responsive cushioning with breathable mesh for daily miles and race days.",
+    "stock": 22
+  },
+  {
+    "id": "power-fit-dumbbells",
+    "name": "Power Fit Dumbbell Set",
+    "category": "Fitness",
+    "price": 89.99,
+    "rating": 4.6,
+    "badge": "Home gym",
+    "accent": "#7c3aed",
+    "description": "Compact adjustable weights for strength training at home or in the studio.",
+    "stock": 14
+  },
+  {
+    "id": "match-day-jersey",
+    "name": "Match Day Performance Jersey",
+    "category": "Apparel",
+    "price": 59.99,
+    "rating": 4.5,
+    "badge": "Fan favorite",
+    "accent": "#dc2626",
+    "description": "Sweat-wicking fabric, athletic fit, and bold color blocking for team pride.",
+    "stock": 45
+  },
+  {
+    "id": "speed-serve-racket",
+    "name": "Speed Serve Tennis Racket",
+    "category": "Tennis",
+    "price": 149.99,
+    "rating": 4.8,
+    "badge": "Pro pick",
+    "accent": "#0f766e",
+    "description": "Balanced control and power for baseline rallies, serves, and quick volleys.",
+    "stock": 11
+  }
+]
