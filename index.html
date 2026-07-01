@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ember & Oak | Restaurant Menu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ['Cormorant Garamond', 'serif'],
+                        body: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        cream: '#FAF7F2',
+                        charcoal: '#1C1917',
+                        ember: '#C45C26',
+                        oak: '#5C4033',
+                        sage: '#6B7F6B',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .menu-item:hover .item-name { color: #C45C26; }
+        .category-btn.active {
+            background-color: #1C1917;
+            color: #FAF7F2;
+        }
+        .hero-pattern {
+            background-image:
+                radial-gradient(circle at 20% 80%, rgba(196, 92, 38, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(92, 64, 51, 0.06) 0%, transparent 50%);
+        }
+    </style>
+</head>
+<body class="bg-cream text-charcoal font-body antialiased">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-cream/90 backdrop-blur-md border-b border-oak/10">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="font-display text-2xl font-bold tracking-wide text-charcoal">
+                Ember <span class="text-ember">&</span> Oak
+            </a>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium tracking-wide uppercase">
+                <a href="#starters" class="text-oak/80 hover:text-ember transition">Starters</a>
+                <a href="#mains" class="text-oak/80 hover:text-ember transition">Mains</a>
+                <a href="#desserts" class="text-oak/80 hover:text-ember transition">Desserts</a>
+                <a href="#drinks" class="text-oak/80 hover:text-ember transition">Drinks</a>
+                <a href="#visit" class="bg-charcoal text-cream px-5 py-2 rounded-full hover:bg-ember transition">Visit Us</a>
+            </div>
+            <button id="menu-toggle" class="md:hidden text-charcoal" aria-label="Open menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden border-t border-oak/10 px-6 py-4 space-y-3 text-sm font-medium uppercase tracking-wide">
+            <a href="#starters" class="block text-oak/80 hover:text-ember">Starters</a>
+            <a href="#mains" class="block text-oak/80 hover:text-ember">Mains</a>
+            <a href="#desserts" class="block text-oak/80 hover:text-ember">Desserts</a>
+            <a href="#drinks" class="block text-oak/80 hover:text-ember">Drinks</a>
+            <a href="#visit" class="block text-ember">Visit Us</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero-pattern relative overflow-hidden">
+        <div class="max-w-5xl mx-auto px-6 py-24 md:py-32 text-center">
+            <p class="text-ember font-medium tracking-[0.3em] uppercase text-sm mb-4">Seasonal Kitchen · Wood-Fired</p>
+            <h1 class="font-display text-5xl md:text-7xl font-bold text-charcoal mb-6 leading-tight">
+                Our Menu
+            </h1>
+            <p class="text-oak/70 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-light">
+                Locally sourced ingredients, slow-cooked over oak embers.
+                Every dish tells a story of the season.
+            </p>
+            <div class="mt-10 flex flex-wrap justify-center gap-3" id="category-filters">
+                <button data-filter="all" class="category-btn active px-5 py-2 rounded-full border border-charcoal/20 text-sm font-medium transition hover:bg-charcoal hover:text-cream">All</button>
+                <button data-filter="starters" class="category-btn px-5 py-2 rounded-full border border-charcoal/20 text-sm font-medium transition hover:bg-charcoal hover:text-cream">Starters</button>
+                <button data-filter="mains" class="category-btn px-5 py-2 rounded-full border border-charcoal/20 text-sm font-medium transition hover:bg-charcoal hover:text-cream">Mains</button>
+                <button data-filter="desserts" class="category-btn px-5 py-2 rounded-full border border-charcoal/20 text-sm font-medium transition hover:bg-charcoal hover:text-cream">Desserts</button>
+                <button data-filter="drinks" class="category-btn px-5 py-2 rounded-full border border-charcoal/20 text-sm font-medium transition hover:bg-charcoal hover:text-cream">Drinks</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Menu Sections -->
+    <main class="max-w-5xl mx-auto px-6 pb-24">
+
+        <!-- Starters -->
+        <section id="starters" class="menu-section mb-20" data-category="starters">
+            <div class="flex items-end gap-4 mb-10 border-b border-oak/15 pb-4">
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-charcoal">Starters</h2>
+                <span class="text-oak/50 text-sm uppercase tracking-widest mb-2">To Begin</span>
+            </div>
+            <div class="grid gap-8 md:grid-cols-2">
+                <article class="menu-item group">
+                    <div class="flex justify-between items-start gap-4">
+                        <div>
+                            <h3 class="item-name font-display text-2xl font-semibold transition">Charred Heirloom Carrots</h3>
+                            <p class="text-oak/60 mt-1 text-sm leading-relaxed">Whipped goat cheese, toasted hazelnuts, honey-thyme glaze</p>
+                            <span class="inline-block mt-2 text-xs font-medium text-sage bg-sage/10 px-2 py-0.5 rounded">Vegetarian</span>
+                        </div>
+                        <span class="font-display text-2xl font-bold text-ember whitespace-nowrap">14</span>
+                    </div>
+                </article>
+                <article class="menu-item group">
+                    <div class="flex justify-between items-start gap-4">
+                        <div>
+                            <h3 class="item-name font-display text-2xl font-semibold transition">Oak-Smoked Salmon Tartare</h3>
+                            <p class="text-oak/60 mt-1 text-sm leading-relaxed">Capers, dill crème, rye crisps, pickled shallot</p>
+                        </div>
+                        <span class="font-display text-2xl font-bold text-ember whitespace-nowrap">18</span>
+                    </div>
+                </article>
+                <article class="menu-item group">
+                    <div class="flex justify-between items-start gap-4">
+                        <div>
+                            <h3 class="item-name font-display text-2xl font-semibold transition">Burrata & Roasted Figs</h3>
+                            <p class="text-oak/60 mt-1 text-sm leading-relaxed">Aged balsamic, prosciutto crisps, basil oil</p>
+                            <span class="inline-block mt-2 text-xs font-medium text-sage bg-sage/10 px-2 py-0.5 rounded">Vegetarian</span>
+                        </div>
+                        <span class="font-display text-2xl font-bold text-ember whitespace-nowrap">16</span>
+                    </div>
+                </article>
+                <article class="menu-item group">
+                    <div class="flex justify-between items-start gap-4">
+                        <div>
+                            <h3 class="item-name font-display text-2xl font-semibold transition">Spiced Pumpkin Soup</h3>
+                            <p class="text-oak/60 mt-1 text-sm leading-relaxed">Coconut cream, pepitas, chili oil</p>
+                            <span class="inline-block mt-2 text-xs font-medium text-sage bg-sage/10 px-2 py-0.5 rounded">Vegan</span>
+                            <span class="inline-block mt-2 ml-1 text-xs font-medium text-ember bg-ember/10 px-2 py-0.5 rounded">Spicy</span>
+                        </div>
+                        <span class="font-display text-2xl font-bold text-ember whitespace-nowrap">12</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Mains -->
+        <section id="mains" class="menu-section mb-20" data-category="mains">
+            <div class="flex items-end gap-4 mb-10 border-b border-oak/15 pb-4">
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-charcoal">Mains</h2>
+                <span class="text-oak/50 text-sm uppercase tracking-widest mb-2">From the Fire</span>
+            </div>
+            <div class="grid gap-8 md:grid-cols-2">
+                <article class="menu-item group">
+                    <div class="flex justify-between items-start gap-4">
+                        <div>
+                            <h3 class="item-name font-display text-2xl font-semibold transition">Ember-Grilled Ribeye</h3>
+                            <p class="text-oak/60 mt-1 text-sm leading-relaxed">14oz prime cut, bone marrow butter, charred broccolini, pomme purée</p>
+                            <span class="inline-block mt-2 text-xs font-medium text-oak bg-oak/10 px-2 py-0.5 rounded">Chef's Pick</span>
+                        </div>
+                        <span class="font-display text-2xl font-bold text-ember whitespace-nowrap">48</span>
+                    </div>
+                </article>
+                <article class="menu-item group">
+                    <div class="flex justify-between items-start gap-4">
+                        <div>
+                            <h3 class="item-name font-display text-2xl font-semibold transition">Pan-Seared Sea Bass</h3>
+                            <p class="text-oak/60 mt-1 text-sm leading-relaxed">Saffron beurre blanc, fennel slaw, crispy capers</p>
+                        </div>
+                        <span class="font-display text-2xl font-bold text-ember whitespace-nowrap">36</span>
+                    </div>
+                </article>
+                <article class="menu-item group">
+                    <div class="flex justify-between items-start gap-4">
+                        <div>
+                            <h3 class="item-name font-display text-2xl font-semibold transition">Wild Mushroom Risotto</h3>
+                            <p class="text-oak/60 mt-1 text-sm leading-relaxed">Porcini, truffle oil, aged parmesan, micro herbs</p>
+                            <span class="inline-block mt-2 text-xs font-medium text-sage bg-sage/10 px-2 py-0.5 rounded">Vegetarian</span>
+                        </div>
+                        <span class="font-display text-2xl font-bold text-ember whitespace-nowrap">28</span>
+                    </div>
+                </article>
+                <article class="menu-item group">
+                    <div class="flex justify-between items-start gap-4">
+                        <div>
+                            <h3 class="item-name font-display text-2xl font-semibold transition">Herb-Crusted Lamb Rack</h3>
+                            <p class="text-oak/60 mt-1 text-sm leading-relaxed">Mint gremolata, roasted root vegetables, red wine jus</p>
+                        </div>
+                        <span class="font-display text-2xl font-bold text-ember whitespace-nowrap">42</span>
+                    </div>
+                </article>
+                <article class="menu-item group">
+                    <div class="flex justify-between items-start gap-4">
+                        <div>
+                            <h3 class="item-name font-display text-2xl font-semibold transition">Wood-Fired Half Chicken</h3>
+                            <p class="text-oak/60 mt-1 text-sm leading-relaxed">Lemon-herb marinade, confit garlic, seasonal greens</p>
+                        </div>
+                        <span class="font-display text-2xl font-bold text-ember whitespace-nowrap">32</span>
+                    </div>
+                </article>
+                <article class="menu-item group">
+                    <div class="flex justify-between items-start gap-4">
+                        <div>
+                            <h3 class="item-name font-display text-2xl font-semibold transition">House-Made Pappardelle</h3>
+                            <p class="text-oak/60 mt-1 text-sm leading-relaxed">Slow-braised short rib ragù, pecorino, fresh basil</p>
+                        </div>
+                        <span class="font-display text-2xl font-bold text-ember whitespace-nowrap">26</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Desserts -->
+        <section id="desserts" class="menu-section mb-20" data-category="desserts">
+            <div class="flex items-end gap-4 mb-10 border-b border-oak/15 pb-4">
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-charcoal">Desserts</h2>
+                <span class="text-oak/50 text-sm uppercase tracking-widest mb-2">Sweet Finish</span>
+            </div>
+            <div class="grid gap-8 md:grid-cols-2">
+                <article class="menu-item group">
+                    <div class="flex justify-between items-start gap-4">
+                        <div>
+                            <h3 class="item-name font-display text-2xl font-semibold transition">Burnt Basque Cheesecake</h3>
+                            <p class="text-oak/60 mt-1 text-sm leading-relaxed">Seasonal berry compote, vanilla bean cream</p>
+                        </div>
+                        <span class="font-display text-2xl font-bold text-ember whitespace-nowrap">12</span>
+                    </div>
+                </article>
+                <article class="menu-item group">
+                    <div class="flex justify-between items-start gap-4">
+                        <div>
+                            <h3 class="item-name font-display text-2xl font-semibold transition">Dark Chocolate Fondant</h3>
+                            <p class="text-oak/60 mt-1 text-sm leading-relaxed">Molten center, salted caramel, espresso gelato</p>
+                        </div>
+                        <span class="font-display text-2xl font-bold text-ember whitespace-nowrap">14</span>
+                    </div>
+                </article>
+                <article class="menu-item group">
+                    <div class="flex justify-between items-start gap-4">
+                        <div>
+                            <h3 class="item-name font-display text-2xl font-semibold transition">Apple Tarte Tatin</h3>
+                            <p class="text-oak/60 mt-1 text-sm leading-relaxed">Caramelized apples, crème fraîche, calvados glaze</p>
+                        </div>
+                        <span class="font-display text-2xl font-bold text-ember whitespace-nowrap">13</span>
+                    </div>
+                </article>
+                <article class="menu-item group">
+                    <div class="flex justify-between items-start gap-4">
+                        <div>
+                            <h3 class="item-name font-display text-2xl font-semibold transition">Seasonal Sorbet Trio</h3>
+                            <p class="text-oak/60 mt-1 text-sm leading-relaxed">Chef's selection of three house-made sorbets</p>
+                            <span class="inline-block mt-2 text-xs font-medium text-sage bg-sage/10 px-2 py-0.5 rounded">Vegan</span>
+                        </div>
+                        <span class="font-display text-2xl font-bold text-ember whitespace-nowrap">10</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Drinks -->
+        <section id="drinks" class="menu-section mb-20" data-category="drinks">
+            <div class="flex items-end gap-4 mb-10 border-b border-oak/15 pb-4">
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-charcoal">Drinks</h2>
+                <span class="text-oak/50 text-sm uppercase tracking-widest mb-2">Bar & Cellar</span>
+            </div>
+            <div class="grid gap-8 md:grid-cols-2">
+                <article class="menu-item group">
+                    <div class="flex justify-between items-start gap-4">
+                        <div>
+                            <h3 class="item-name font-display text-2xl font-semibold transition">Smoked Old Fashioned</h3>
+                            <p class="text-oak/60 mt-1 text-sm leading-relaxed">Bourbon, maple bitters, orange peel, oak smoke</p>
+                        </div>
+                        <span class="font-display text-2xl font-bold text-ember whitespace-nowrap">16</span>
+                    </div>
+                </article>
+                <article class="menu-item group">
+                    <div class="flex justify-between items-start gap-4">
+                        <div>
+                            <h3 class="item-name font-display text-2xl font-semibold transition">Elderflower Spritz</h3>
+                            <p class="text-oak/60 mt-1 text-sm leading-relaxed">Prosecco, St-Germain, soda, fresh cucumber</p>
+                        </div>
+                        <span class="font-display text-2xl font-bold text-ember whitespace-nowrap">14</span>
+                    </div>
+                </article>
+                <article class="menu-item group">
+                    <div class="flex justify-between items-start gap-4">
+                        <div>
+                            <h3 class="item-name font-display text-2xl font-semibold transition">House Red / White</h3>
+                            <p class="text-oak/60 mt-1 text-sm leading-relaxed">Rotating selection from partner vineyards · 6oz pour</p>
+                        </div>
+                        <span class="font-display text-2xl font-bold text-ember whitespace-nowrap">12</span>
+                    </div>
+                </article>
+                <article class="menu-item group">
+                    <div class="flex justify-between items-start gap-4">
+                        <div>
+                            <h3 class="item-name font-display text-2xl font-semibold transition">Artisan Espresso</h3>
+                            <p class="text-oak/60 mt-1 text-sm leading-relaxed">Single-origin beans, locally roasted</p>
+                        </div>
+                        <span class="font-display text-2xl font-bold text-ember whitespace-nowrap">5</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Visit / Footer -->
+    <footer id="visit" class="bg-charcoal text-cream">
+        <div class="max-w-5xl mx-auto px-6 py-16 md:py-20">
+            <div class="grid md:grid-cols-3 gap-12">
+                <div>
+                    <h3 class="font-display text-3xl font-bold mb-4">Ember & Oak</h3>
+                    <p class="text-cream/60 leading-relaxed text-sm">
+                        A neighborhood gathering place where fire meets flavor.
+                        Reservations recommended on weekends.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-xs uppercase tracking-widest text-cream/40 mb-4">Hours</h4>
+                    <ul class="space-y-2 text-sm text-cream/70">
+                        <li class="flex justify-between"><span>Tue – Thu</span><span>5pm – 10pm</span></li>
+                        <li class="flex justify-between"><span>Fri – Sat</span><span>5pm – 11pm</span></li>
+                        <li class="flex justify-between"><span>Sunday</span><span>4pm – 9pm</span></li>
+                        <li class="flex justify-between"><span>Monday</span><span class="text-cream/40">Closed</span></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xs uppercase tracking-widest text-cream/40 mb-4">Find Us</h4>
+                    <address class="not-italic text-sm text-cream/70 space-y-2">
+                        <p>142 Oak Street<br>Denton, TX 76201</p>
+                        <p><a href="tel:+19405550142" class="hover:text-ember transition">(940) 555-0142</a></p>
+                        <p><a href="mailto:hello@emberandoak.com" class="hover:text-ember transition">hello@emberandoak.com</a></p>
+                    </address>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-cream/10 text-center text-xs text-cream/30">
+                <p>Prices subject to change. Please inform your server of any allergies.</p>
+                <p class="mt-2">&copy; 2026 Ember & Oak. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const toggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        toggle.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        const filterBtns = document.querySelectorAll('.category-btn');
+        const sections = document.querySelectorAll('.menu-section');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.dataset.filter;
+                sections.forEach(section => {
+                    if (filter === 'all' || section.dataset.category === filter) {
+                        section.style.display = '';
+                    } else {
+                        section.style.display = 'none';
+                    }
+                });
+
+                if (filter !== 'all') {
+                    document.getElementById(filter).scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
