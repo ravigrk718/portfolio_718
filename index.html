@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ravi Kumar Guttula — Data Analyst</title>
+  <meta name="description" content="Data Analyst with 4+ years of IT experience. SQL, Python, Tableau, Power BI, and cloud analytics. Based in Denton, TX." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #14212b;
+      --ink-soft: #3a4a56;
+      --mist: #e8f0f2;
+      --paper: #f4f8f9;
+      --teal: #0c6b6e;
+      --teal-deep: #084f52;
+      --lime: #9bb84a;
+      --sand: #d4c4a8;
+      --line: rgba(20, 33, 43, 0.12);
+      --glow: rgba(12, 107, 110, 0.18);
+      --radius: 2px;
+      --max: 1120px;
+      --font-display: "Syne", sans-serif;
+      --font-body: "Figtree", sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    .wrap {
+      width: min(100% - 2.5rem, var(--max));
+      margin-inline: auto;
+    }
+
+    /* —— Nav —— */
+    .nav {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 100;
+      backdrop-filter: blur(14px);
+      background: rgba(244, 248, 249, 0.78);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s, background 0.3s;
+    }
+
+    .nav.scrolled {
+      border-bottom-color: var(--line);
+      background: rgba(244, 248, 249, 0.92);
+    }
+
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 4.25rem;
+    }
+
+    .nav__brand {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
+    }
+
+    .nav__links {
+      display: none;
+      gap: 1.75rem;
+      align-items: center;
+    }
+
+    .nav__links a {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--ink-soft);
+      transition: color 0.2s;
+    }
+
+    .nav__links a:hover { color: var(--teal); }
+
+    .nav__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.55rem 1.1rem;
+      background: var(--ink);
+      color: var(--paper) !important;
+      font-weight: 600;
+      font-size: 0.88rem;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .nav__cta:hover { background: var(--teal); color: white !important; }
+
+    .nav__toggle {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.4rem;
+    }
+
+    .nav__toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--ink);
+      transition: transform 0.25s, opacity 0.25s;
+    }
+
+    .nav__toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav__toggle.open span:nth-child(2) { opacity: 0; }
+    .nav__toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .nav__mobile {
+      display: none;
+      flex-direction: column;
+      gap: 0.25rem;
+      padding: 0.5rem 0 1.25rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .nav__mobile.open { display: flex; }
+
+    .nav__mobile a {
+      padding: 0.75rem 0;
+      font-weight: 500;
+      color: var(--ink-soft);
+    }
+
+    @media (min-width: 860px) {
+      .nav__links { display: flex; }
+      .nav__toggle { display: none; }
+    }
+
+    /* —— Hero —— */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: flex-end;
+      padding: 7rem 0 4.5rem;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(ellipse 80% 60% at 85% 20%, rgba(155, 184, 74, 0.22), transparent 55%),
+        radial-gradient(ellipse 70% 50% at 10% 80%, rgba(12, 107, 110, 0.2), transparent 50%),
+        linear-gradient(160deg, #dce8eb 0%, #eef4f5 40%, #e4ece8 100%);
+    }
+
+    .hero__grid {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background-image:
+        linear-gradient(rgba(20, 33, 43, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(20, 33, 43, 0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse 70% 60% at 70% 40%, black 20%, transparent 75%);
+      animation: gridDrift 28s linear infinite;
+    }
+
+    @keyframes gridDrift {
+      from { background-position: 0 0; }
+      to { background-position: 48px 48px; }
+    }
+
+    .hero__viz {
+      position: absolute;
+      right: -5%;
+      top: 12%;
+      width: min(58vw, 640px);
+      height: min(58vw, 640px);
+      z-index: -1;
+      opacity: 0.55;
+      animation: vizFloat 9s ease-in-out infinite;
+    }
+
+    @keyframes vizFloat {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-18px) rotate(2deg); }
+    }
+
+    .hero__content {
+      max-width: 720px;
+      animation: riseIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    @keyframes riseIn {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero__name {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(3.1rem, 9vw, 6.2rem);
+      line-height: 0.95;
+      letter-spacing: -0.045em;
+      margin-bottom: 1.35rem;
+      color: var(--ink);
+    }
+
+    .hero__name span {
+      display: block;
+      color: var(--teal);
+    }
+
+    .hero__headline {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(1.25rem, 2.6vw, 1.65rem);
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+      margin-bottom: 0.85rem;
+      max-width: 28ch;
+    }
+
+    .hero__lede {
+      font-size: 1.08rem;
+      color: var(--ink-soft);
+      max-width: 42ch;
+      margin-bottom: 2rem;
+    }
+
+    .hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.85rem 1.4rem;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, transform 0.2s, border-color 0.2s;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn--primary {
+      background: var(--teal);
+      color: white;
+    }
+
+    .btn--primary:hover { background: var(--teal-deep); }
+
+    .btn--ghost {
+      background: transparent;
+      color: var(--ink);
+      border: 1.5px solid var(--ink);
+    }
+
+    .btn--ghost:hover {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    /* —— Sections —— */
+    section {
+      padding: 5.5rem 0;
+    }
+
+    .section__label {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.75rem;
+    }
+
+    .section__title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(1.85rem, 3.5vw, 2.6rem);
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 0.65rem;
+    }
+
+    .section__lede {
+      color: var(--ink-soft);
+      font-size: 1.05rem;
+      max-width: 52ch;
+      margin-bottom: 2.75rem;
+    }
+
+    /* —— About —— */
+    .about {
+      background: var(--paper);
+      border-top: 1px solid var(--line);
+    }
+
+    .about__grid {
+      display: grid;
+      gap: 2.5rem;
+    }
+
+    @media (min-width: 800px) {
+      .about__grid {
+        grid-template-columns: 1.4fr 1fr;
+        gap: 4rem;
+        align-items: start;
+      }
+    }
+
+    .about__copy p {
+      color: var(--ink-soft);
+      font-size: 1.08rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .about__copy p:last-child { margin-bottom: 0; }
+
+    .about__meta {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      padding-top: 0.25rem;
+    }
+
+    .about__meta-item {
+      padding-bottom: 1.15rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .about__meta-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .about__meta-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.3rem;
+    }
+
+    .about__meta-value {
+      font-weight: 600;
+      font-size: 1.02rem;
+    }
+
+    .about__meta-value a:hover { color: var(--teal); }
+
+    /* —— Skills —— */
+    .skills {
+      background:
+        radial-gradient(ellipse 50% 40% at 0% 100%, rgba(12, 107, 110, 0.08), transparent 60%),
+        var(--mist);
+    }
+
+    .skills__list {
+      display: grid;
+      gap: 0;
+    }
+
+    .skills__row {
+      display: grid;
+      gap: 0.5rem 2rem;
+      padding: 1.4rem 0;
+      border-top: 1px solid var(--line);
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .skills__row.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .skills__row:last-child { border-bottom: 1px solid var(--line); }
+
+    @media (min-width: 700px) {
+      .skills__row {
+        grid-template-columns: 180px 1fr;
+        align-items: baseline;
+      }
+    }
+
+    .skills__cat {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
+    }
+
+    .skills__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem 0.65rem;
+      color: var(--ink-soft);
+      font-weight: 500;
+      font-size: 0.98rem;
+    }
+
+    .skills__tags span::after {
+      content: "·";
+      margin-left: 0.65rem;
+      color: var(--sand);
+    }
+
+    .skills__tags span:last-child::after { content: none; }
+
+    .certs {
+      margin-top: 2.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .cert {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1rem;
+      background: white;
+      border-left: 3px solid var(--lime);
+      font-weight: 600;
+      font-size: 0.92rem;
+    }
+
+    /* —— Experience —— */
+    .experience { background: var(--paper); }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .job {
+      position: relative;
+      padding: 2.25rem 0 2.25rem 1.5rem;
+      border-left: 2px solid var(--line);
+      opacity: 0;
+      transform: translateX(-12px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .job.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .job::before {
+      content: "";
+      position: absolute;
+      left: -6px;
+      top: 2.55rem;
+      width: 10px;
+      height: 10px;
+      background: var(--teal);
+      border-radius: 50%;
+    }
+
+    .job__header {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      margin-bottom: 1rem;
+    }
+
+    @media (min-width: 720px) {
+      .job {
+        padding-left: 2rem;
+      }
+      .job__header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 1rem;
+      }
+    }
+
+    .job__role {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+
+    .job__company {
+      font-weight: 600;
+      color: var(--teal);
+      margin-top: 0.15rem;
+    }
+
+    .job__meta {
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .job__bullets {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .job__bullets li {
+      position: relative;
+      padding-left: 1.1rem;
+      color: var(--ink-soft);
+      font-size: 0.98rem;
+    }
+
+    .job__bullets li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 5px;
+      height: 5px;
+      background: var(--lime);
+    }
+
+    /* —— Projects —— */
+    .projects {
+      background:
+        linear-gradient(180deg, #0f2a30 0%, #14353c 50%, #0f2a30 100%);
+      color: #e8f0f2;
+    }
+
+    .projects .section__label { color: var(--lime); }
+    .projects .section__title { color: white; }
+    .projects .section__lede { color: rgba(232, 240, 242, 0.72); }
+
+    .projects__grid {
+      display: grid;
+      gap: 0;
+    }
+
+    .project {
+      padding: 2rem 0;
+      border-top: 1px solid rgba(232, 240, 242, 0.14);
+      display: grid;
+      gap: 1rem;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .project.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .project:last-child { border-bottom: 1px solid rgba(232, 240, 242, 0.14); }
+
+    @media (min-width: 780px) {
+      .project {
+        grid-template-columns: 200px 1fr;
+        gap: 2.5rem;
+        padding: 2.35rem 0;
+        align-items: start;
+      }
+    }
+
+    .project__tag {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--lime);
+      margin-bottom: 0.4rem;
+    }
+
+    .project__title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.35rem;
+      letter-spacing: -0.02em;
+      color: white;
+      line-height: 1.2;
+    }
+
+    .project__body p {
+      color: rgba(232, 240, 242, 0.72);
+      font-size: 0.98rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .project__body p:last-child { margin-bottom: 0; }
+
+    /* —— Education —— */
+    .education { background: var(--mist); }
+
+    .edu__list {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 700px) {
+      .edu__list { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    }
+
+    .edu__item {
+      padding-top: 1.25rem;
+      border-top: 3px solid var(--teal);
+    }
+
+    .edu__degree {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.2rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.35rem;
+    }
+
+    .edu__school {
+      font-weight: 600;
+      color: var(--teal);
+      margin-bottom: 0.25rem;
+    }
+
+    .edu__meta {
+      font-size: 0.92rem;
+      color: var(--ink-soft);
+    }
+
+    /* —— Contact —— */
+    .contact {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse 60% 50% at 90% 10%, rgba(155, 184, 74, 0.18), transparent 50%),
+        radial-gradient(ellipse 50% 40% at 5% 90%, rgba(12, 107, 110, 0.12), transparent 50%),
+        var(--paper);
+      border-top: 1px solid var(--line);
+    }
+
+    .contact__inner {
+      max-width: 640px;
+    }
+
+    .contact__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    .contact__links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      font-weight: 600;
+      font-size: 0.98rem;
+    }
+
+    .contact__links a {
+      color: var(--teal);
+      border-bottom: 1.5px solid transparent;
+      transition: border-color 0.2s;
+      padding-bottom: 2px;
+    }
+
+    .contact__links a:hover { border-bottom-color: var(--teal); }
+
+    /* —— Footer —— */
+    footer {
+      padding: 1.75rem 0;
+      border-top: 1px solid var(--line);
+      background: var(--paper);
+    }
+
+    .footer__inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.75rem;
+      font-size: 0.88rem;
+      color: var(--ink-soft);
+    }
+
+    .footer__inner strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    /* —— Reveal stagger helpers —— */
+    .skills__row:nth-child(2) { transition-delay: 0.08s; }
+    .skills__row:nth-child(3) { transition-delay: 0.16s; }
+    .skills__row:nth-child(4) { transition-delay: 0.24s; }
+    .skills__row:nth-child(5) { transition-delay: 0.32s; }
+    .skills__row:nth-child(6) { transition-delay: 0.4s; }
+
+    .job:nth-child(2) { transition-delay: 0.12s; }
+    .job:nth-child(3) { transition-delay: 0.24s; }
+
+    .project:nth-child(2) { transition-delay: 0.08s; }
+    .project:nth-child(3) { transition-delay: 0.16s; }
+    .project:nth-child(4) { transition-delay: 0.24s; }
+    .project:nth-child(5) { transition-delay: 0.32s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .skills__row, .job, .project {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" id="nav" aria-label="Primary">
+    <div class="wrap nav__inner">
+      <a href="#top" class="nav__brand">Ravi Kumar Guttula</a>
+      <div class="nav__links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact" class="nav__cta">Get in touch</a>
+      </div>
+      <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="wrap nav__mobile" id="navMobile">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Get in touch</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="hero__grid" aria-hidden="true"></div>
+    <svg class="hero__viz" viewBox="0 0 640 640" fill="none" aria-hidden="true">
+      <circle cx="320" cy="320" r="280" stroke="#0c6b6e" stroke-opacity="0.15" stroke-width="1.5"/>
+      <circle cx="320" cy="320" r="210" stroke="#0c6b6e" stroke-opacity="0.2" stroke-width="1.5"/>
+      <circle cx="320" cy="320" r="140" stroke="#9bb84a" stroke-opacity="0.35" stroke-width="1.5"/>
+      <polyline points="80,420 160,360 240,390 320,250 400,290 480,180 560,220"
+        stroke="#0c6b6e" stroke-width="2.5" stroke-opacity="0.45" fill="none"/>
+      <polyline points="80,480 160,450 240,470 320,380 400,400 480,320 560,350"
+        stroke="#9bb84a" stroke-width="2" stroke-opacity="0.5" fill="none"/>
+      <circle cx="320" cy="250" r="6" fill="#0c6b6e" fill-opacity="0.7"/>
+      <circle cx="480" cy="180" r="6" fill="#9bb84a" fill-opacity="0.8"/>
+      <circle cx="240" cy="390" r="4" fill="#0c6b6e" fill-opacity="0.5"/>
+      <rect x="100" y="500" width="28" height="70" fill="#0c6b6e" fill-opacity="0.2"/>
+      <rect x="145" y="460" width="28" height="110" fill="#0c6b6e" fill-opacity="0.28"/>
+      <rect x="190" y="480" width="28" height="90" fill="#9bb84a" fill-opacity="0.3"/>
+      <rect x="235" y="430" width="28" height="140" fill="#0c6b6e" fill-opacity="0.22"/>
+      <rect x="280" y="400" width="28" height="170" fill="#9bb84a" fill-opacity="0.35"/>
+    </svg>
+    <div class="wrap">
+      <div class="hero__content">
+        <h1 class="hero__name">Ravi Kumar<span>Guttula</span></h1>
+        <p class="hero__headline">Data Analyst turning complex datasets into clear business decisions.</p>
+        <p class="hero__lede">4+ years across SQL, Python, Tableau, and Power BI — with cloud pipelines and KPI dashboards that stakeholders actually use.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#projects">View projects</a>
+          <a class="btn btn--ghost" href="assets/Ravi_Kumar_Guttula_Resume.pdf" download>Download resume</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="about" id="about">
+    <div class="wrap">
+      <p class="section__label">About</p>
+      <h2 class="section__title">Insights from messy data.</h2>
+      <div class="about__grid">
+        <div class="about__copy">
+          <p>
+            I’m a Data Analyst with an M.S. in Information Science from the University of North Texas,
+            specializing in turning complex datasets into clear, actionable business insights.
+          </p>
+          <p>
+            I’ve written advanced SQL for extraction and ETL, built Python automation that cut manual effort by ~40%,
+            and shipped interactive KPI dashboards for technical and non-technical audiences alike —
+            across large operational datasets at TCS and IoT monitoring systems at Total Automation Solutions.
+          </p>
+        </div>
+        <aside class="about__meta">
+          <div class="about__meta-item">
+            <div class="about__meta-label">Location</div>
+            <div class="about__meta-value">Denton, TX</div>
+          </div>
+          <div class="about__meta-item">
+            <div class="about__meta-label">Email</div>
+            <div class="about__meta-value"><a href="mailto:ravigrk718@gmail.com">ravigrk718@gmail.com</a></div>
+          </div>
+          <div class="about__meta-item">
+            <div class="about__meta-label">LinkedIn</div>
+            <div class="about__meta-value"><a href="https://linkedin.com/in/ravi-guttula" target="_blank" rel="noopener">linkedin.com/in/ravi-guttula</a></div>
+          </div>
+          <div class="about__meta-item">
+            <div class="about__meta-label">Focus</div>
+            <div class="about__meta-value">SQL · ETL · Dashboards · Cloud Analytics</div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="skills" id="skills">
+    <div class="wrap">
+      <p class="section__label">Skills</p>
+      <h2 class="section__title">Tools I work with daily.</h2>
+      <p class="section__lede">From query optimization and ETL pipelines to stakeholder-ready visualizations and cloud platforms.</p>
+      <div class="skills__list">
+        <div class="skills__row reveal">
+          <div class="skills__cat">Data Analysis</div>
+          <div class="skills__tags">
+            <span>SQL</span><span>Tableau</span><span>Power BI</span><span>Advanced Excel</span>
+            <span>Data Modeling</span><span>ETL / ELT</span><span>KPI Dashboards</span>
+          </div>
+        </div>
+        <div class="skills__row reveal">
+          <div class="skills__cat">Programming</div>
+          <div class="skills__tags">
+            <span>Python</span><span>Shell Scripting</span><span>Java</span><span>C#</span>
+            <span>Spring Boot</span><span>RESTful APIs</span><span>JavaScript</span>
+          </div>
+        </div>
+        <div class="skills__row reveal">
+          <div class="skills__cat">Databases</div>
+          <div class="skills__tags">
+            <span>MySQL</span><span>Query Optimization</span><span>SharePoint</span><span>Data Warehousing</span>
+          </div>
+        </div>
+        <div class="skills__row reveal">
+          <div class="skills__cat">Cloud &amp; DevOps</div>
+          <div class="skills__tags">
+            <span>GCP (Dataproc, Cloud Storage)</span><span>Azure</span><span>AWS</span>
+            <span>Jenkins</span><span>Docker</span><span>Kubernetes</span>
+          </div>
+        </div>
+        <div class="skills__row reveal">
+          <div class="skills__cat">Version Control</div>
+          <div class="skills__tags">
+            <span>Git</span><span>GitHub</span><span>Bitbucket</span><span>Azure DevOps</span>
+          </div>
+        </div>
+        <div class="skills__row reveal">
+          <div class="skills__cat">Web</div>
+          <div class="skills__tags">
+            <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Bootstrap</span><span>JSON</span>
+          </div>
+        </div>
+      </div>
+      <div class="certs">
+        <div class="cert">Microsoft Azure Administrator</div>
+        <div class="cert">Google Associate Cloud Engineer</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="experience" id="experience">
+    <div class="wrap">
+      <p class="section__label">Experience</p>
+      <h2 class="section__title">Where the work happened.</h2>
+      <p class="section__lede">Systems engineering and data analysis roles delivering automation, SQL pipelines, and operational dashboards.</p>
+      <div class="timeline">
+        <article class="job reveal">
+          <div class="job__header">
+            <div>
+              <h3 class="job__role">Systems Engineer / Data Analyst</h3>
+              <div class="job__company">Tata Consultancy Services — Hyderabad, India</div>
+            </div>
+            <div class="job__meta">Jan 2022 – Aug 2024</div>
+          </div>
+          <ul class="job__bullets">
+            <li>Owned ~80% of team deliverables for an 8-member engineering group; improved CI/CD reliability and cut deployment delays by 30% with Linux and Jenkins.</li>
+            <li>Built Python automation for log rotation, health checks, and provisioning — reducing manual effort by ~40% across release cycles.</li>
+            <li>Optimized MySQL queries for log analysis, extraction, and ETL, surfacing defect patterns across 10+ release cycles.</li>
+            <li>Created SQL-driven KPI dashboards tracking deployment frequency, failure rates, and SLA compliance across 3 cross-functional teams.</li>
+            <li>Automated SharePoint documentation workflows and Jenkins-integrated shell validation checks to reduce rollbacks.</li>
+          </ul>
+        </article>
+        <article class="job reveal">
+          <div class="job__header">
+            <div>
+              <h3 class="job__role">SCADA Engineer / Data Analyst</h3>
+              <div class="job__company">Total Automation Solutions — Pune, India</div>
+            </div>
+            <div class="job__meta">May 2021 – Jan 2022</div>
+          </div>
+          <ul class="job__bullets">
+            <li>Delivered 80% of implementation for an IoT gas monitoring system across 8 sites (pressure, temperature, flow).</li>
+            <li>Stored real-time sensor data in SQL for historical trend analysis, maintenance scheduling, and compliance reporting.</li>
+            <li>Wrote SQL to aggregate time-series data, flag anomalies and threshold breaches, and support proactive maintenance.</li>
+            <li>Built 3 Power BI dashboards connected to the SCADA database for real-time and historical gas-flow KPIs.</li>
+          </ul>
+        </article>
+        <article class="job reveal">
+          <div class="job__header">
+            <div>
+              <h3 class="job__role">Intern</h3>
+              <div class="job__company">Bharat Heavy Electricals Limited (BHEL) — Hyderabad, India</div>
+            </div>
+            <div class="job__meta">Apr 2019 – Jun 2019</div>
+          </div>
+          <ul class="job__bullets">
+            <li>Integrated PLCs with CNC machines; gained hands-on exposure to PLC programming, machine interfacing, and industrial automation.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="projects" id="projects">
+    <div class="wrap">
+      <p class="section__label">Projects</p>
+      <h2 class="section__title">Selected work.</h2>
+      <p class="section__lede">Analytics, visualization, and systems projects spanning cloud big data, Tableau storytelling, and IoT.</p>
+      <div class="projects__grid">
+        <article class="project reveal">
+          <div>
+            <div class="project__tag">GCP &amp; Big Data</div>
+            <h3 class="project__title">Urban Air Quality Analysis</h3>
+          </div>
+          <div class="project__body">
+            <p>Processed 500K+ EPA Daily AQI records for 2024 across 15 U.S. metro regions on Google Cloud Platform (Dataproc, Cloud Storage, Hadoop/HDFS).</p>
+            <p>Cleaned and transformed raw AQI data with SQL, then visualized seasonal pollution spikes and high-risk metros for technical and non-technical audiences.</p>
+          </div>
+        </article>
+        <article class="project reveal">
+          <div>
+            <div class="project__tag">Tableau</div>
+            <h3 class="project__title">Educational Diversity Analysis</h3>
+          </div>
+          <div class="project__body">
+            <p>Analyzed educational and demographic datasets across 50+ U.S. states to surface racial representation gaps and state-level diversity trends.</p>
+            <p>Built interactive Tableau dashboards and written summaries tailored for non-technical stakeholders.</p>
+          </div>
+        </article>
+        <article class="project reveal">
+          <div>
+            <div class="project__tag">IoT</div>
+            <h3 class="project__title">Automatic Track Switching System</h3>
+          </div>
+          <div class="project__body">
+            <p>Developed an IoT railway track switching system using sensors and microcontrollers to detect train position and trigger automatic switching.</p>
+            <p>Implemented real-time monitoring and control logic with hands-on embedded systems and automation experience.</p>
+          </div>
+        </article>
+        <article class="project reveal">
+          <div>
+            <div class="project__tag">Full-Stack</div>
+            <h3 class="project__title">Website Development Capstone</h3>
+          </div>
+          <div class="project__body">
+            <p>Designed and deployed a dynamic full-stack site with PHP, HTML, and CSS — including registration, secure login with password hashing, and a contact form.</p>
+          </div>
+        </article>
+        <article class="project reveal">
+          <div>
+            <div class="project__tag">Volunteer</div>
+            <h3 class="project__title">Run for the Reeds 2025</h3>
+          </div>
+          <div class="project__body">
+            <p>Coordinated tasks, schedules, and team communications for a community event in Baytown — keeping roles clear and delivery on track.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="education" id="education">
+    <div class="wrap">
+      <p class="section__label">Education</p>
+      <h2 class="section__title">Academic foundation.</h2>
+      <p class="section__lede">Graduate work in information science paired with an engineering undergraduate degree.</p>
+      <div class="edu__list">
+        <div class="edu__item">
+          <h3 class="edu__degree">Master of Science — Information Science</h3>
+          <div class="edu__school">University of North Texas</div>
+          <div class="edu__meta">Denton, TX · May 2026</div>
+        </div>
+        <div class="edu__item">
+          <h3 class="edu__degree">Bachelor of Technology — ECE</h3>
+          <div class="edu__school">GITAM University</div>
+          <div class="edu__meta">Visakhapatnam, India · May 2020</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="contact__inner">
+        <p class="section__label">Contact</p>
+        <h2 class="section__title">Let’s talk data.</h2>
+        <p class="section__lede">Open to data analyst and analytics engineering roles. Reach out by email or LinkedIn — happy to share dashboards, queries, and project walkthroughs.</p>
+        <div class="contact__actions">
+          <a class="btn btn--primary" href="mailto:ravigrk718@gmail.com">Email me</a>
+          <a class="btn btn--ghost" href="assets/Ravi_Kumar_Guttula_Resume.pdf" download>Download resume</a>
+        </div>
+        <div class="contact__links">
+          <a href="mailto:ravigrk718@gmail.com">ravigrk718@gmail.com</a>
+          <a href="https://linkedin.com/in/ravi-guttula" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap footer__inner">
+      <span><strong>Ravi Kumar Guttula</strong> — Data Analyst</span>
+      <span>© <span id="year"></span> · Denton, TX</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const nav = document.getElementById("nav");
+    const toggle = document.getElementById("navToggle");
+    const mobile = document.getElementById("navMobile");
+
+    window.addEventListener("scroll", () => {
+      nav.classList.toggle("scrolled", window.scrollY > 24);
+    }, { passive: true });
+
+    toggle.addEventListener("click", () => {
+      const open = mobile.classList.toggle("open");
+      toggle.classList.toggle("open", open);
+      toggle.setAttribute("aria-expanded", String(open));
+      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    });
+
+    mobile.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mobile.classList.remove("open");
+        toggle.classList.remove("open");
+        toggle.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+    );
+
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>
