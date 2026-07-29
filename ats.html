@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ATS Resume Score — Ravi Kumar Guttula</title>
+  <meta name="description" content="Paste a job description to see how well Ravi Kumar Guttula's resume matches — keyword coverage, missing skills, and an ATS-style match score." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #14212b;
+      --ink-soft: #3a4a56;
+      --mist: #e8f0f2;
+      --paper: #f4f8f9;
+      --teal: #0c6b6e;
+      --teal-deep: #084f52;
+      --lime: #9bb84a;
+      --sand: #d4c4a8;
+      --line: rgba(20, 33, 43, 0.12);
+      --good: #2d7a4f;
+      --warn: #b07020;
+      --bad: #a33b3b;
+      --max: 1120px;
+      --font-display: "Syne", sans-serif;
+      --font-body: "Figtree", sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100svh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button, textarea { font: inherit; }
+
+    .wrap {
+      width: min(100% - 2.5rem, var(--max));
+      margin-inline: auto;
+    }
+
+    .nav {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 100;
+      backdrop-filter: blur(14px);
+      background: rgba(244, 248, 249, 0.88);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 4.25rem;
+    }
+
+    .nav__brand {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
+    }
+
+    .nav__links {
+      display: flex;
+      gap: 1.25rem;
+      align-items: center;
+    }
+
+    .nav__links a {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--ink-soft);
+      transition: color 0.2s;
+    }
+
+    .nav__links a:hover { color: var(--teal); }
+
+    .nav__cta {
+      display: inline-flex;
+      padding: 0.55rem 1.1rem;
+      background: var(--ink);
+      color: var(--paper) !important;
+      font-weight: 600;
+      font-size: 0.88rem;
+      transition: background 0.2s;
+    }
+
+    .nav__cta:hover { background: var(--teal); }
+
+    .page {
+      padding: 6.5rem 0 4rem;
+      position: relative;
+      isolation: isolate;
+    }
+
+    .page__bg {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(ellipse 70% 45% at 90% 0%, rgba(155, 184, 74, 0.18), transparent 55%),
+        radial-gradient(ellipse 55% 40% at 5% 30%, rgba(12, 107, 110, 0.14), transparent 50%),
+        linear-gradient(165deg, #dce8eb 0%, #eef4f5 45%, #e4ece8 100%);
+    }
+
+    .page__grid {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background-image:
+        linear-gradient(rgba(20, 33, 43, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(20, 33, 43, 0.035) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 20%, black 15%, transparent 70%);
+      animation: gridDrift 30s linear infinite;
+    }
+
+    @keyframes gridDrift {
+      from { background-position: 0 0; }
+      to { background-position: 48px 48px; }
+    }
+
+    .intro {
+      max-width: 40rem;
+      margin-bottom: 2.5rem;
+      animation: riseIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    @keyframes riseIn {
+      from { opacity: 0; transform: translateY(22px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.75rem;
+    }
+
+    .intro h1 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(2.4rem, 6vw, 3.6rem);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      margin-bottom: 0.85rem;
+    }
+
+    .intro h1 span { color: var(--teal); }
+
+    .intro p {
+      color: var(--ink-soft);
+      font-size: 1.05rem;
+      max-width: 46ch;
+    }
+
+    .workspace {
+      display: grid;
+      gap: 1.5rem;
+      animation: riseIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+    }
+
+    @media (min-width: 960px) {
+      .workspace {
+        grid-template-columns: 1.15fr 0.85fr;
+        align-items: start;
+      }
+    }
+
+    .panel {
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      backdrop-filter: blur(8px);
+      padding: 1.35rem 1.35rem 1.5rem;
+    }
+
+    .panel__head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .panel__title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+    }
+
+    .panel__hint {
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+    }
+
+    .field-label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 0.45rem;
+    }
+
+    textarea {
+      width: 100%;
+      border: 1.5px solid var(--line);
+      background: rgba(244, 248, 249, 0.9);
+      color: var(--ink);
+      padding: 0.9rem 1rem;
+      resize: vertical;
+      line-height: 1.5;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    textarea:focus {
+      outline: none;
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(12, 107, 110, 0.15);
+    }
+
+    #jobDescription { min-height: 220px; }
+    #resumeText { min-height: 160px; }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-top: 1rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.8rem 1.25rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, transform 0.2s, border-color 0.2s;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn--primary {
+      background: var(--teal);
+      color: white;
+    }
+
+    .btn--primary:hover { background: var(--teal-deep); }
+
+    .btn--ghost {
+      background: transparent;
+      color: var(--ink);
+      border: 1.5px solid var(--ink);
+    }
+
+    .btn--ghost:hover {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .btn--subtle {
+      background: var(--mist);
+      color: var(--ink);
+      border: 1px solid var(--line);
+    }
+
+    .results {
+      display: none;
+      flex-direction: column;
+      gap: 1.15rem;
+      animation: riseIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    .results.visible { display: flex; }
+
+    .score-card {
+      text-align: center;
+      padding: 1.75rem 1.25rem 1.5rem;
+      background:
+        radial-gradient(ellipse 80% 70% at 50% 0%, rgba(12, 107, 110, 0.12), transparent 60%),
+        rgba(255, 255, 255, 0.78);
+      border: 1px solid var(--line);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .score-ring {
+      width: 148px;
+      height: 148px;
+      margin: 0 auto 1rem;
+      position: relative;
+    }
+
+    .score-ring svg {
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg);
+    }
+
+    .score-ring__track {
+      fill: none;
+      stroke: rgba(20, 33, 43, 0.1);
+      stroke-width: 10;
+    }
+
+    .score-ring__value {
+      fill: none;
+      stroke: var(--teal);
+      stroke-width: 10;
+      stroke-linecap: round;
+      stroke-dasharray: 339.292;
+      stroke-dashoffset: 339.292;
+      transition: stroke-dashoffset 1s cubic-bezier(0.22, 1, 0.36, 1), stroke 0.4s;
+    }
+
+    .score-ring__label {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-content: center;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 2.4rem;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+
+    .score-ring__label small {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-top: 0.35rem;
+    }
+
+    .score-verdict {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.2rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.35rem;
+    }
+
+    .score-summary {
+      color: var(--ink-soft);
+      font-size: 0.95rem;
+      max-width: 32ch;
+      margin-inline: auto;
+    }
+
+    .breakdown {
+      display: grid;
+      gap: 0.65rem;
+    }
+
+    .metric {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.35rem 0.75rem;
+      align-items: center;
+      padding: 0.75rem 0.85rem;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+    }
+
+    .metric__name {
+      font-weight: 600;
+      font-size: 0.92rem;
+    }
+
+    .metric__score {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .metric__bar {
+      grid-column: 1 / -1;
+      height: 6px;
+      background: rgba(20, 33, 43, 0.08);
+      overflow: hidden;
+    }
+
+    .metric__fill {
+      height: 100%;
+      width: 0;
+      background: var(--teal);
+      transition: width 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .chip-block {
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      padding: 1rem 1.05rem 1.15rem;
+    }
+
+    .chip-block h3 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.2rem;
+    }
+
+    .chip-block p {
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+      margin-bottom: 0.75rem;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .chip {
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.3rem 0.55rem;
+      border: 1px solid var(--line);
+      background: var(--mist);
+      color: var(--ink);
+      animation: chipIn 0.4s ease both;
+    }
+
+    .chip--match {
+      background: rgba(45, 122, 79, 0.12);
+      border-color: rgba(45, 122, 79, 0.28);
+      color: var(--good);
+    }
+
+    .chip--miss {
+      background: rgba(163, 59, 59, 0.08);
+      border-color: rgba(163, 59, 59, 0.22);
+      color: var(--bad);
+    }
+
+    @keyframes chipIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .tips {
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      padding: 1rem 1.05rem 1.15rem;
+    }
+
+    .tips h3 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.65rem;
+    }
+
+    .tips ol {
+      padding-left: 1.15rem;
+      display: grid;
+      gap: 0.55rem;
+      color: var(--ink-soft);
+      font-size: 0.92rem;
+    }
+
+    .tips li::marker { color: var(--teal); font-weight: 700; }
+
+    .empty-state {
+      padding: 2rem 1.25rem;
+      text-align: center;
+      color: var(--ink-soft);
+      border: 1px dashed var(--line);
+      background: rgba(255, 255, 255, 0.45);
+    }
+
+    .empty-state strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--ink);
+      margin-bottom: 0.35rem;
+    }
+
+    .error {
+      display: none;
+      margin-top: 0.85rem;
+      padding: 0.7rem 0.85rem;
+      background: rgba(163, 59, 59, 0.08);
+      border: 1px solid rgba(163, 59, 59, 0.2);
+      color: var(--bad);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .error.visible { display: block; }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 1.5rem 0 2rem;
+      color: var(--ink-soft);
+      font-size: 0.9rem;
+    }
+
+    .footer__inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    .footer__inner strong { color: var(--ink); }
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="Primary">
+    <div class="wrap nav__inner">
+      <a href="index.html" class="nav__brand">Ravi Kumar Guttula</a>
+      <div class="nav__links">
+        <a href="index.html#about">Portfolio</a>
+        <a href="assets/Ravi_Kumar_Guttula_Resume.pdf" download>Resume PDF</a>
+        <a href="index.html#contact" class="nav__cta">Get in touch</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="page">
+    <div class="page__bg" aria-hidden="true"></div>
+    <div class="page__grid" aria-hidden="true"></div>
+
+    <div class="wrap">
+      <header class="intro">
+        <p class="eyebrow">ATS Match Tool</p>
+        <h1>Score the <span>resume</span> against any job.</h1>
+        <p>Paste a job description to see keyword coverage, missing skills, and an ATS-style match score based on Ravi’s resume.</p>
+      </header>
+
+      <div class="workspace">
+        <div class="inputs">
+          <div class="panel" style="margin-bottom: 1.15rem;">
+            <div class="panel__head">
+              <h2 class="panel__title">Job description</h2>
+              <span class="panel__hint">Required</span>
+            </div>
+            <label class="field-label" for="jobDescription">Paste the full posting</label>
+            <textarea id="jobDescription" placeholder="Paste the job description here — responsibilities, requirements, and preferred skills…"></textarea>
+            <div class="actions">
+              <button type="button" class="btn btn--primary" id="scoreBtn">Get ATS score</button>
+              <button type="button" class="btn btn--subtle" id="sampleBtn">Load sample JD</button>
+              <button type="button" class="btn btn--ghost" id="clearBtn">Clear</button>
+            </div>
+            <div class="error" id="errorMsg" role="alert"></div>
+          </div>
+
+          <div class="panel">
+            <div class="panel__head">
+              <h2 class="panel__title">Resume text</h2>
+              <span class="panel__hint">Pre-loaded · editable</span>
+            </div>
+            <label class="field-label" for="resumeText">Used for keyword matching</label>
+            <textarea id="resumeText" spellcheck="false"></textarea>
+            <div class="actions">
+              <button type="button" class="btn btn--subtle" id="resetResumeBtn">Reset to saved resume</button>
+              <a class="btn btn--ghost" href="assets/Ravi_Kumar_Guttula_Resume.pdf" download>Download PDF</a>
+            </div>
+          </div>
+        </div>
+
+        <aside class="results-col" aria-live="polite">
+          <div class="empty-state" id="emptyState">
+            <strong>No score yet</strong>
+            Paste a job description and click <em>Get ATS score</em> to see match results.
+          </div>
+
+          <div class="results" id="results">
+            <div class="score-card">
+              <div class="score-ring" aria-hidden="true">
+                <svg viewBox="0 0 120 120">
+                  <circle class="score-ring__track" cx="60" cy="60" r="54"></circle>
+                  <circle class="score-ring__value" id="scoreRing" cx="60" cy="60" r="54"></circle>
+                </svg>
+                <div class="score-ring__label">
+                  <span id="scoreNumber">0</span>
+                  <small>ATS score</small>
+                </div>
+              </div>
+              <div class="score-verdict" id="scoreVerdict">—</div>
+              <p class="score-summary" id="scoreSummary"></p>
+            </div>
+
+            <div class="breakdown" id="breakdown"></div>
+
+            <div class="chip-block">
+              <h3>Matched keywords</h3>
+              <p>Skills and terms found in both the job description and resume.</p>
+              <div class="chips" id="matchedChips"></div>
+            </div>
+
+            <div class="chip-block">
+              <h3>Missing keywords</h3>
+              <p>Important JD terms not clearly present in the resume — add these where true.</p>
+              <div class="chips" id="missingChips"></div>
+            </div>
+
+            <div class="tips">
+              <h3>Recommendations</h3>
+              <ol id="tipsList"></ol>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap footer__inner">
+      <span><strong>Ravi Kumar Guttula</strong> — ATS Resume Score</span>
+      <span>Client-side keyword match · not a live ATS vendor</span>
+    </div>
+  </footer>
+
+  <script>
+    const DEFAULT_RESUME = `RAVI KUMAR GUTTULA
+Denton, TX 76201 | ravigrk718@gmail.com | linkedin.com/in/ravi-guttula
+
+Career Summary
+Data Analyst with 4+ years of IT experience and an M.S. in Information Science from the University of North Texas, specializing in turning complex datasets into clear, actionable business insights.
+Proficient in SQL, Python, Tableau, Power BI, and Advanced Excel with hands-on experience writing advanced queries for data extraction, ETL pipelines, transformation, and stakeholder reporting across large operational datasets.
+Skilled in building interactive KPI dashboards and data visualizations that communicate trends and anomalies to both technical teams and non-technical business stakeholders.
+
+Technical Skills
+Data Analysis: SQL, Tableau, Microsoft Excel (Advanced), Data Modeling, Power BI, ETL/ELT, KPI Dashboards
+Programming: Python, Shell Scripting, C, Java, C#, Spring Boot, Spring Cloud, RESTful APIs, Angular
+Databases: MySQL (query optimization, log analysis, reporting), SharePoint, data warehousing concepts
+Cloud & DevOps: Google Cloud (GCP, Dataproc, Cloud Storage), Azure, CI/CD with Jenkins, Docker, Kubernetes, AWS
+Version Control: Git, GitHub, Bitbucket, Azure DevOps
+Web Technologies: HTML5, CSS3, JavaScript, Bootstrap, JSON
+Certifications: Microsoft Azure Administrator, Google Associate Cloud Engineer
+
+Employment Experience
+Tata Consultancy Services — Hyderabad, India
+Systems Engineer / Data Analyst | Jan 2022 – Aug 2024
+• Contributed 80% of team deliverables for an 8-member engineering group; deployed internal software packages using Linux and Jenkins, improving CI/CD reliability and reducing deployment delays by 30%.
+• Developed Python automation scripts for log rotation, server health checks, and environment provisioning — reducing manual effort by ~40% and minimizing human error across release cycles.
+• Wrote and optimized MySQL SQL queries for log analysis, data extraction, and ETL workflows, enabling faster root-cause analysis and identifying recurring defect patterns across 10+ release cycles.
+• Built Python-based monitoring utilities to parse application log files, aggregate error metrics, and generate daily summary reports — delivering actionable insights on system performance to engineering leads.
+• Created and maintained SQL-driven KPI dashboards and ad-hoc reports tracking deployment frequency, failure rates, and SLA compliance across 3 cross-functional teams.
+• Automated SharePoint documentation workflows using Python scripts, reducing documentation sync lag and ensuring version-controlled records for 5+ teams.
+• Developed shell scripts integrated with Jenkins pipelines to automate pre/post-deployment validation checks, reducing rollback incidents and improving deployment success rates.
+
+Total Automation Solutions — Pune, India
+SCADA Engineer / Data Analyst | May 2021 – Jan 2022
+• Delivered 80% of implementation within a 5-member team for an IoT-based gas monitoring system covering pressure, temperature, and flow parameters across 8 monitoring sites.
+• Collected and stored real-time sensor data into a structured SQL database, enabling historical trend analysis and generating operational reports for maintenance scheduling and compliance.
+• Wrote SQL queries to extract and aggregate time-series sensor data, identifying anomalies and threshold breaches — enabling proactive maintenance and reducing unplanned downtime.
+• Built 3 Power BI dashboards connected to the SCADA SQL database to visualize real-time and historical gas flow KPIs, giving operations managers a centralized health view across all sites.
+• Designed Power BI reports tracking device uptime, alert frequency, and sensor drift trends, enabling the team to prioritize field maintenance and improve automation reliability.
+
+Bharat Heavy Electricals Limited (BHEL) — Hyderabad, India
+Intern | Apr 2019 – Jun 2019
+• Completed hands-on internship integrating Programmable Logic Controllers (PLCs) with CNC machines; gained exposure to PLC programming, machine interfacing, and industrial automation workflows.
+
+Projects
+Urban Air Quality Analysis — GCP & Big Data
+• Processed 500K+ EPA Daily AQI records for 2024 across 15 U.S. metropolitan regions using Google Cloud Platform (Dataproc, Cloud Storage, Apache Hadoop/HDFS).
+• Wrote and executed SQL queries to clean, transform, and organize raw AQI data; identified metro areas with consistently high AQI scores and seasonal pollution spikes.
+• Visualized findings using line plots, bar charts, and comparative diagrams — communicating environmental risk insights to both technical and non-technical audiences.
+
+Educational Diversity Analysis — Tableau
+• Analyzed educational and demographic datasets to identify racial representation gaps and state-level diversity trends across 50+ U.S. states using Tableau.
+• Built interactive dashboards and written summaries presenting findings clearly for non-technical stakeholders.
+
+Automatic Track Switching System — IoT
+• Developed an IoT-based railway track switching system using sensors and microcontrollers to sense train position and trigger automatic switching.
+• Implemented real-time data monitoring and control logic; gained hands-on experience in embedded systems and automation.
+
+Website Development — Capstone Project
+• Designed and deployed a dynamic full-stack website using PHP, HTML, and CSS on Replit, featuring user registration, secure login (password hashing), and a contact form.
+
+Volunteer Project Management — Run for the Reeds 2025, Baytown
+• Coordinated tasks, schedules, and team communications for a community event.
+
+Education
+University of North Texas — Denton, TX
+Master of Science – Information Science | May 2026
+
+GITAM University — Visakhapatnam, India
+Bachelor of Technology – Electronics and Communication Engineering | May 2020`;
+
+    const SAMPLE_JD = `Data Analyst
+
+About the role
+We are hiring a Data Analyst to turn complex operational data into clear insights for product and business stakeholders. You will write SQL, build dashboards, and partner with engineering on ETL and reporting.
+
+Responsibilities
+• Write and optimize SQL queries for data extraction, transformation, and ad-hoc analysis
+• Build and maintain KPI dashboards in Tableau or Power BI
+• Develop Python scripts for data cleaning, automation, and reporting
+• Design ETL / ELT pipelines and support data warehousing concepts
+• Communicate trends, anomalies, and recommendations to technical and non-technical audiences
+• Collaborate with cross-functional teams on SLA metrics, deployment analytics, and operational reporting
+
+Requirements
+• 3+ years of experience as a Data Analyst or similar role
+• Strong SQL (MySQL or equivalent) and Advanced Excel
+• Experience with Tableau and/or Power BI
+• Python for data analysis and automation
+• Familiarity with cloud platforms (GCP, Azure, or AWS)
+• Strong communication and stakeholder reporting skills
+
+Preferred
+• ETL tools, data modeling, Git
+• CI/CD, Docker, or Jenkins exposure
+• Master's degree in Information Science, Computer Science, or related field`;
+
+    const SKILL_LEXICON = [
+      "sql", "mysql", "postgresql", "postgres", "nosql", "mongodb",
+      "python", "r", "java", "javascript", "typescript", "c#", "c++", "scala", "spark",
+      "tableau", "power bi", "powerbi", "looker", "qlik", "excel", "advanced excel",
+      "etl", "elt", "data modeling", "data warehouse", "data warehousing", "snowflake",
+      "bigquery", "redshift", "databricks", "hadoop", "hdfs", "airflow", "dbt",
+      "kpi", "dashboard", "dashboards", "visualization", "data visualization",
+      "machine learning", "statistics", "a/b testing", "forecasting",
+      "aws", "azure", "gcp", "google cloud", "dataproc", "cloud storage",
+      "docker", "kubernetes", "jenkins", "ci/cd", "linux", "shell scripting", "bash",
+      "git", "github", "bitbucket", "azure devops", "jira", "sharepoint",
+      "rest", "restful", "api", "apis", "spring boot", "angular", "react",
+      "html", "css", "bootstrap", "json", "php",
+      "pandas", "numpy", "scikit-learn", "matplotlib", "seaborn",
+      "agile", "scrum", "stakeholder", "communication", "storytelling",
+      "data analysis", "data analytics", "business intelligence", "bi",
+      "iot", "scada", "plc", "automation"
+    ];
+
+    const ROLE_TERMS = [
+      "data analyst", "business analyst", "analytics engineer", "data engineer",
+      "bi analyst", "business intelligence", "systems engineer", "data scientist",
+      "reporting analyst", "operations analyst"
+    ];
+
+    const SOFT_TERMS = [
+      "stakeholder", "communication", "collaborate", "cross-functional",
+      "problem solving", "problem-solving", "analytical", "attention to detail",
+      "presentation", "documentation", "leadership", "ownership"
+    ];
+
+    const STOP = new Set([
+      "the", "and", "for", "with", "that", "this", "from", "your", "you", "our",
+      "are", "will", "have", "has", "been", "were", "was", "into", "over", "under",
+      "about", "such", "than", "then", "them", "they", "their", "there", "these",
+      "those", "what", "when", "where", "which", "while", "who", "whom", "why",
+      "how", "all", "any", "both", "each", "few", "more", "most", "other", "some",
+      "such", "only", "own", "same", "so", "too", "very", "can", "just", "should",
+      "now", "also", "using", "use", "used", "able", "across", "within", "including",
+      "include", "includes", "required", "requirements", "preferred", "preference",
+      "responsibilities", "responsibility", "qualifications", "qualification",
+      "experience", "experiences", "years", "year", "role", "roles", "job", "work",
+      "working", "team", "teams", "company", "position", "applicant", "candidate",
+      "must", "may", "etc", "via", "per", "new", "strong", "well", "good", "high",
+      "based", "related", "field", "degree", "bachelor", "master", "plus"
+    ]);
+
+    const CIRC = 2 * Math.PI * 54;
+
+    const resumeEl = document.getElementById("resumeText");
+    const jdEl = document.getElementById("jobDescription");
+    const errorEl = document.getElementById("errorMsg");
+    const emptyEl = document.getElementById("emptyState");
+    const resultsEl = document.getElementById("results");
+    const scoreRing = document.getElementById("scoreRing");
+    const scoreNumber = document.getElementById("scoreNumber");
+    const scoreVerdict = document.getElementById("scoreVerdict");
+    const scoreSummary = document.getElementById("scoreSummary");
+    const breakdownEl = document.getElementById("breakdown");
+    const matchedChips = document.getElementById("matchedChips");
+    const missingChips = document.getElementById("missingChips");
+    const tipsList = document.getElementById("tipsList");
+
+    resumeEl.value = DEFAULT_RESUME;
+    scoreRing.style.strokeDasharray = String(CIRC);
+    scoreRing.style.strokeDashoffset = String(CIRC);
+
+    function normalize(text) {
+      return text
+        .toLowerCase()
+        .replace(/[’']/g, "'")
+        .replace(/[^a-z0-9+#./\-\s]/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+    }
+
+    function containsPhrase(haystack, phrase) {
+      const p = phrase.toLowerCase();
+      if (p.includes(" ") || p.includes("/") || p.includes("#") || p.includes("+") || p.includes(".")) {
+        return haystack.includes(p);
+      }
+      const re = new RegExp(`(?:^|[^a-z0-9])${p.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?:[^a-z0-9]|$)`, "i");
+      return re.test(haystack);
+    }
+
+    function extractKeywords(jdNorm) {
+      const found = new Set();
+
+      for (const skill of SKILL_LEXICON) {
+        if (containsPhrase(jdNorm, skill)) found.add(skill);
+      }
+      for (const role of ROLE_TERMS) {
+        if (containsPhrase(jdNorm, role)) found.add(role);
+      }
+      for (const soft of SOFT_TERMS) {
+        if (containsPhrase(jdNorm, soft)) found.add(soft);
+      }
+
+      // Capture capitalized multi-word tools from original JD later via lexicon only;
+      // also pull frequent technical-looking tokens from JD.
+      const tokens = jdNorm.split(" ");
+      for (const t of tokens) {
+        if (t.length < 3 || STOP.has(t)) continue;
+        if (/^[a-z]{2,}(?:\+\+|#$)/.test(t) || /^(sql|etl|api|aws|gcp|kpi|ci\/cd)$/.test(t)) {
+          if (SKILL_LEXICON.includes(t)) found.add(t);
+        }
+      }
+
+      return [...found].sort((a, b) => b.length - a.length || a.localeCompare(b));
+    }
+
+    function dedupeOverlaps(keywords) {
+      const sorted = [...keywords].sort((a, b) => b.length - a.length);
+      const kept = [];
+      for (const kw of sorted) {
+        const covered = kept.some((k) => k !== kw && (k.includes(kw) || kw.includes(k)) && Math.abs(k.length - kw.length) <= 4 && (k.startsWith(kw) || kw.startsWith(k)));
+        // Prefer longer phrases; drop shorter if fully contained as standalone synonym collision
+        const subsumed = kept.some((k) => k.includes(kw) && k !== kw && kw.length >= 3);
+        if (subsumed && !kw.includes(" ")) continue;
+        kept.push(kw);
+      }
+      return kept;
+    }
+
+    function scoreMatch(resumeNorm, keywords) {
+      const matched = [];
+      const missing = [];
+      for (const kw of keywords) {
+        if (containsPhrase(resumeNorm, kw)) matched.push(kw);
+        else missing.push(kw);
+      }
+      return { matched, missing };
+    }
+
+    function categoryScore(resumeNorm, jdNorm, terms) {
+      const relevant = terms.filter((t) => containsPhrase(jdNorm, t));
+      if (!relevant.length) return { score: null, matched: [], missing: [], total: 0 };
+      const matched = relevant.filter((t) => containsPhrase(resumeNorm, t));
+      const missing = relevant.filter((t) => !containsPhrase(resumeNorm, t));
+      return {
+        score: Math.round((matched.length / relevant.length) * 100),
+        matched,
+        missing,
+        total: relevant.length
+      };
+    }
+
+    function yearsAlignment(resumeText, jdText) {
+      const jdYears = [...jdText.matchAll(/(\d+)\+?\s*\+?\s*years?/gi)].map((m) => Number(m[1]));
+      const resumeYears = [...resumeText.matchAll(/(\d+)\+?\s*years?/gi)].map((m) => Number(m[1]));
+      if (!jdYears.length) return { score: null, detail: "No years requirement detected" };
+      const needed = Math.max(...jdYears);
+      const have = resumeYears.length ? Math.max(...resumeYears) : 0;
+      if (have >= needed) return { score: 100, detail: `Resume shows ${have}+ years vs ${needed}+ required` };
+      if (have > 0) {
+        const ratio = Math.max(40, Math.round((have / needed) * 100));
+        return { score: ratio, detail: `Resume shows ~${have} years vs ${needed}+ required` };
+      }
+      return { score: 55, detail: `JD asks for ${needed}+ years; quantify years explicitly on resume` };
+    }
+
+    function educationScore(resumeNorm, jdNorm) {
+      const wantsMasters = /master'?s|ms\b|m\.s\b|graduate degree/.test(jdNorm);
+      const wantsBachelors = /bachelor'?s|bs\b|b\.s\b|b\.tech|undergraduate/.test(jdNorm);
+      const hasMasters = /master|m\.s|information science/.test(resumeNorm);
+      const hasBachelors = /bachelor|b\.tech|electronics/.test(resumeNorm);
+      if (!wantsMasters && !wantsBachelors) return { score: null, detail: "No degree requirement detected" };
+      if (wantsMasters && hasMasters) return { score: 100, detail: "Master’s degree requirement covered" };
+      if (wantsBachelors && (hasBachelors || hasMasters)) return { score: 100, detail: "Degree requirement covered" };
+      if (wantsMasters && hasBachelors) return { score: 70, detail: "Bachelor’s present; Master’s preferred/required in JD" };
+      return { score: 40, detail: "Degree keywords from JD not clearly reflected" };
+    }
+
+    function verdictFor(score) {
+      if (score >= 85) return { title: "Strong ATS match", color: "#2d7a4f", blurb: "High keyword overlap — tailor a few missing terms and you’re in great shape." };
+      if (score >= 70) return { title: "Good match", color: "#0c6b6e", blurb: "Solid coverage. Mirror missing JD language in skills and bullets where accurate." };
+      if (score >= 55) return { title: "Moderate match", color: "#b07020", blurb: "Partial overlap. Prioritize adding high-impact missing skills and role phrases." };
+      return { title: "Low match", color: "#a33b3b", blurb: "Many JD keywords are absent. Customize the resume heavily for this posting." };
+    }
+
+    function buildTips(score, missing, years, education, skillsCat) {
+      const tips = [];
+      if (missing.length) {
+        tips.push(`Weave in missing keywords where true: ${missing.slice(0, 6).map(formatLabel).join(", ")}.`);
+      }
+      if (skillsCat.missing?.length) {
+        tips.push(`Put hard skills from the JD into a dedicated Technical Skills line near the top.`);
+      }
+      if (years.score !== null && years.score < 100) {
+        tips.push(years.detail + ". Open the summary with an explicit years-of-experience line.");
+      }
+      if (education.score !== null && education.score < 100) {
+        tips.push(education.detail + ".");
+      }
+      tips.push("Mirror exact tool names from the JD (e.g. “Power BI” vs “PowerBI”, “Google Cloud” vs “GCP”).");
+      tips.push("Keep formatting ATS-friendly: single-column text, standard headings, no tables or text boxes.");
+      if (score >= 80) {
+        tips.push("Lead with a tailored summary that names the target title and 2–3 JD priorities.");
+      }
+      return tips.slice(0, 6);
+    }
+
+    function formatLabel(kw) {
+      const map = {
+        "power bi": "Power BI",
+        powerbi: "Power BI",
+        sql: "SQL",
+        mysql: "MySQL",
+        etl: "ETL",
+        elt: "ELT",
+        kpi: "KPI",
+        aws: "AWS",
+        gcp: "GCP",
+        "ci/cd": "CI/CD",
+        api: "API",
+        apis: "APIs",
+        "c#": "C#",
+        "restful": "RESTful",
+        "data analyst": "Data Analyst",
+        "business analyst": "Business Analyst",
+        "analytics engineer": "Analytics Engineer",
+        "data engineer": "Data Engineer",
+        "systems engineer": "Systems Engineer",
+        iot: "IoT",
+        scada: "SCADA",
+        plc: "PLC",
+        bi: "BI"
+      };
+      if (map[kw]) return map[kw];
+      return kw.replace(/\b\w/g, (c) => c.toUpperCase());
+    }
+
+    function renderChips(el, items, kind) {
+      el.innerHTML = "";
+      if (!items.length) {
+        const span = document.createElement("span");
+        span.className = "chip";
+        span.textContent = kind === "match" ? "No lexicon matches yet" : "None — strong coverage";
+        el.appendChild(span);
+        return;
+      }
+      items.forEach((item, i) => {
+        const span = document.createElement("span");
+        span.className = `chip chip--${kind}`;
+        span.style.animationDelay = `${Math.min(i, 12) * 0.03}s`;
+        span.textContent = formatLabel(item);
+        el.appendChild(span);
+      });
+    }
+
+    function renderMetrics(metrics) {
+      breakdownEl.innerHTML = "";
+      metrics.forEach((m, i) => {
+        const row = document.createElement("div");
+        row.className = "metric";
+        row.innerHTML = `
+          <div class="metric__name">${m.name}</div>
+          <div class="metric__score">${m.score === null ? "—" : m.score + "%"}</div>
+          <div class="metric__bar"><div class="metric__fill" style="width:0; transition-delay:${i * 0.08}s"></div></div>
+        `;
+        breakdownEl.appendChild(row);
+        requestAnimationFrame(() => {
+          const fill = row.querySelector(".metric__fill");
+          fill.style.width = (m.score ?? 0) + "%";
+          if (m.score !== null) {
+            if (m.score >= 80) fill.style.background = "var(--good)";
+            else if (m.score >= 60) fill.style.background = "var(--teal)";
+            else if (m.score >= 40) fill.style.background = "var(--warn)";
+            else fill.style.background = "var(--bad)";
+          }
+        });
+      });
+    }
+
+    function analyze() {
+      const jd = jdEl.value.trim();
+      const resume = resumeEl.value.trim();
+      errorEl.classList.remove("visible");
+
+      if (!jd) {
+        errorEl.textContent = "Paste a job description to calculate an ATS score.";
+        errorEl.classList.add("visible");
+        return;
+      }
+      if (jd.length < 80) {
+        errorEl.textContent = "Add more of the job description (requirements and skills) for a useful score.";
+        errorEl.classList.add("visible");
+        return;
+      }
+      if (!resume) {
+        errorEl.textContent = "Resume text is empty. Reset to the saved resume or paste your own.";
+        errorEl.classList.add("visible");
+        return;
+      }
+
+      const jdNorm = normalize(jd);
+      const resumeNorm = normalize(resume);
+      let keywords = dedupeOverlaps(extractKeywords(jdNorm));
+
+      // If lexicon found too few, fall back to significant JD nouns/tokens
+      if (keywords.length < 6) {
+        const extras = [...new Set(jdNorm.split(" ").filter((t) => t.length > 4 && !STOP.has(t)))].slice(0, 20);
+        keywords = dedupeOverlaps([...keywords, ...extras]);
+      }
+
+      const { matched, missing } = scoreMatch(resumeNorm, keywords);
+      const keywordScore = keywords.length
+        ? Math.round((matched.length / keywords.length) * 100)
+        : 0;
+
+      const skillsCat = categoryScore(resumeNorm, jdNorm, SKILL_LEXICON);
+      const roleCat = categoryScore(resumeNorm, jdNorm, ROLE_TERMS);
+      const softCat = categoryScore(resumeNorm, jdNorm, SOFT_TERMS);
+      const years = yearsAlignment(resume, jd);
+      const education = educationScore(resumeNorm, jdNorm);
+
+      const parts = [
+        { w: 0.5, s: keywordScore },
+        { w: 0.25, s: skillsCat.score ?? keywordScore },
+        { w: 0.1, s: roleCat.score ?? 70 },
+        { w: 0.08, s: softCat.score ?? 65 },
+        { w: 0.04, s: years.score ?? 75 },
+        { w: 0.03, s: education.score ?? 75 }
+      ];
+      const totalW = parts.reduce((a, p) => a + p.w, 0);
+      const overall = Math.round(parts.reduce((a, p) => a + p.s * p.w, 0) / totalW);
+
+      const verdict = verdictFor(overall);
+
+      emptyEl.style.display = "none";
+      resultsEl.classList.add("visible");
+
+      scoreNumber.textContent = String(overall);
+      scoreVerdict.textContent = verdict.title;
+      scoreVerdict.style.color = verdict.color;
+      scoreSummary.textContent = `${verdict.blurb} Matched ${matched.length} of ${keywords.length} keywords.`;
+      scoreRing.style.stroke = verdict.color;
+      scoreRing.style.strokeDashoffset = String(CIRC * (1 - overall / 100));
+
+      renderMetrics([
+        { name: "Keyword coverage", score: keywordScore },
+        { name: "Hard skills", score: skillsCat.score },
+        { name: "Role / title terms", score: roleCat.score },
+        { name: "Soft skills", score: softCat.score },
+        { name: "Years alignment", score: years.score },
+        { name: "Education fit", score: education.score }
+      ]);
+
+      renderChips(matchedChips, matched.slice(0, 24), "match");
+      renderChips(missingChips, missing.slice(0, 24), "miss");
+
+      tipsList.innerHTML = "";
+      buildTips(overall, missing, years, education, skillsCat).forEach((tip) => {
+        const li = document.createElement("li");
+        li.textContent = tip;
+        tipsList.appendChild(li);
+      });
+
+      resultsEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+
+    document.getElementById("scoreBtn").addEventListener("click", analyze);
+    document.getElementById("sampleBtn").addEventListener("click", () => {
+      jdEl.value = SAMPLE_JD;
+      errorEl.classList.remove("visible");
+      analyze();
+    });
+    document.getElementById("clearBtn").addEventListener("click", () => {
+      jdEl.value = "";
+      errorEl.classList.remove("visible");
+      resultsEl.classList.remove("visible");
+      emptyEl.style.display = "block";
+      scoreRing.style.strokeDashoffset = String(CIRC);
+      scoreNumber.textContent = "0";
+    });
+    document.getElementById("resetResumeBtn").addEventListener("click", () => {
+      resumeEl.value = DEFAULT_RESUME;
+    });
+
+    jdEl.addEventListener("keydown", (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "Enter") analyze();
+    });
+  </script>
+</body>
+</html>
