@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ATS Resume Score — Ravi Kumar Guttula</title>
-  <meta name="description" content="Paste a job description to see how well Ravi Kumar Guttula's resume matches — keyword coverage, missing skills, and an ATS-style match score." />
+  <title>ATS Resume Score &amp; Tailor — Ravi Kumar Guttula</title>
+  <meta name="description" content="Paste a job description to score Ravi Kumar Guttula's resume and generate a tailored ATS-friendly version for that role." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
@@ -489,6 +489,85 @@
 
     .tips li::marker { color: var(--teal); font-weight: 700; }
 
+    .tailored {
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid var(--line);
+      padding: 1.1rem 1.1rem 1.25rem;
+    }
+
+    .tailored__head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 0.55rem;
+    }
+
+    .tailored__head h3 {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .tailored__meta {
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+    }
+
+    .tailored__note {
+      font-size: 0.88rem;
+      color: var(--ink-soft);
+      margin-bottom: 0.85rem;
+    }
+
+    #tailoredResume {
+      min-height: 320px;
+      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.78rem;
+      line-height: 1.45;
+      white-space: pre-wrap;
+    }
+
+    .tailored__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-top: 0.85rem;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 1.25rem;
+      right: 1.25rem;
+      z-index: 200;
+      background: var(--ink);
+      color: var(--paper);
+      padding: 0.7rem 1rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      opacity: 0;
+      transform: translateY(8px);
+      pointer-events: none;
+      transition: opacity 0.25s, transform 0.25s;
+    }
+
+    .toast.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .workspace--wide {
+      margin-top: 1.5rem;
+    }
+
+    @media (min-width: 960px) {
+      .tailored-full {
+        grid-column: 1 / -1;
+      }
+    }
+
     .empty-state {
       padding: 2rem 1.25rem;
       text-align: center;
@@ -553,9 +632,9 @@
 
     <div class="wrap">
       <header class="intro">
-        <p class="eyebrow">ATS Match Tool</p>
-        <h1>Score the <span>resume</span> against any job.</h1>
-        <p>Paste a job description to see keyword coverage, missing skills, and an ATS-style match score based on Ravi’s resume.</p>
+        <p class="eyebrow">ATS Match &amp; Tailor</p>
+        <h1>Score it. Then <span>rewrite</span> it for the job.</h1>
+        <p>Paste a job description to get an ATS match score and a tailored resume that prioritizes the skills, title, and language that posting asks for.</p>
       </header>
 
       <div class="workspace">
@@ -568,7 +647,7 @@
             <label class="field-label" for="jobDescription">Paste the full posting</label>
             <textarea id="jobDescription" placeholder="Paste the job description here — responsibilities, requirements, and preferred skills…"></textarea>
             <div class="actions">
-              <button type="button" class="btn btn--primary" id="scoreBtn">Get ATS score</button>
+              <button type="button" class="btn btn--primary" id="scoreBtn">Score &amp; tailor resume</button>
               <button type="button" class="btn btn--subtle" id="sampleBtn">Load sample JD</button>
               <button type="button" class="btn btn--ghost" id="clearBtn">Clear</button>
             </div>
@@ -592,7 +671,7 @@
         <aside class="results-col" aria-live="polite">
           <div class="empty-state" id="emptyState">
             <strong>No score yet</strong>
-            Paste a job description and click <em>Get ATS score</em> to see match results.
+            Paste a job description and click <em>Score &amp; tailor resume</em> for a match score and customized resume.
           </div>
 
           <div class="results" id="results">
@@ -609,6 +688,7 @@
               </div>
               <div class="score-verdict" id="scoreVerdict">—</div>
               <p class="score-summary" id="scoreSummary"></p>
+              <p class="score-summary" id="tailoredScoreNote" style="margin-top:0.55rem;"></p>
             </div>
 
             <div class="breakdown" id="breakdown"></div>
@@ -621,7 +701,7 @@
 
             <div class="chip-block">
               <h3>Missing keywords</h3>
-              <p>Important JD terms not clearly present in the resume — add these where true.</p>
+              <p>Important JD terms not clearly present in the original resume.</p>
               <div class="chips" id="missingChips"></div>
             </div>
 
@@ -631,14 +711,31 @@
             </div>
           </div>
         </aside>
+
+        <section class="tailored tailored-full" id="tailoredSection" hidden>
+          <div class="tailored__head">
+            <h3>Tailored resume for this job</h3>
+            <span class="tailored__meta" id="tailoredMeta"></span>
+          </div>
+          <p class="tailored__note">Rewritten from your experience to mirror the job title, prioritize matching skills, and surface the most relevant bullets. Review before sending — only keep claims that are accurate.</p>
+          <label class="field-label" for="tailoredResume">Generated resume</label>
+          <textarea id="tailoredResume" spellcheck="false"></textarea>
+          <div class="tailored__actions">
+            <button type="button" class="btn btn--primary" id="copyTailoredBtn">Copy resume</button>
+            <button type="button" class="btn btn--subtle" id="downloadTailoredBtn">Download .txt</button>
+            <button type="button" class="btn btn--ghost" id="useTailoredBtn">Use as resume input</button>
+          </div>
+        </section>
       </div>
     </div>
   </main>
 
+  <div class="toast" id="toast" role="status"></div>
+
   <footer>
     <div class="wrap footer__inner">
-      <span><strong>Ravi Kumar Guttula</strong> — ATS Resume Score</span>
-      <span>Client-side keyword match · not a live ATS vendor</span>
+      <span><strong>Ravi Kumar Guttula</strong> — ATS Score &amp; Tailored Resume</span>
+      <span>Client-side match + rewrite · not a live ATS vendor</span>
     </div>
   </footer>
 
@@ -794,14 +891,118 @@ Preferred
     const scoreNumber = document.getElementById("scoreNumber");
     const scoreVerdict = document.getElementById("scoreVerdict");
     const scoreSummary = document.getElementById("scoreSummary");
+    const tailoredScoreNote = document.getElementById("tailoredScoreNote");
     const breakdownEl = document.getElementById("breakdown");
     const matchedChips = document.getElementById("matchedChips");
     const missingChips = document.getElementById("missingChips");
     const tipsList = document.getElementById("tipsList");
+    const tailoredSection = document.getElementById("tailoredSection");
+    const tailoredResumeEl = document.getElementById("tailoredResume");
+    const tailoredMeta = document.getElementById("tailoredMeta");
+    const toastEl = document.getElementById("toast");
+
+    const RESUME_PROFILE = {
+      name: "RAVI KUMAR GUTTULA",
+      contact: "Denton, TX 76201 | ravigrk718@gmail.com | linkedin.com/in/ravi-guttula",
+      years: "4+",
+      degree: "M.S. in Information Science from the University of North Texas",
+      skillGroups: {
+        "Data Analysis": ["SQL", "Tableau", "Microsoft Excel (Advanced)", "Data Modeling", "Power BI", "ETL/ELT", "KPI Dashboards", "Data Visualization", "Business Intelligence"],
+        "Programming": ["Python", "Shell Scripting", "Java", "C#", "Spring Boot", "RESTful APIs", "JavaScript", "Angular"],
+        "Databases": ["MySQL", "Query Optimization", "SharePoint", "Data Warehousing"],
+        "Cloud & DevOps": ["Google Cloud (GCP, Dataproc, Cloud Storage)", "Azure", "AWS", "CI/CD", "Jenkins", "Docker", "Kubernetes", "Linux"],
+        "Version Control": ["Git", "GitHub", "Bitbucket", "Azure DevOps"],
+        "Web Technologies": ["HTML5", "CSS3", "JavaScript", "Bootstrap", "JSON"]
+      },
+      certifications: ["Microsoft Azure Administrator", "Google Associate Cloud Engineer"],
+      jobs: [
+        {
+          title: "Systems Engineer / Data Analyst",
+          company: "Tata Consultancy Services — Hyderabad, India",
+          dates: "Jan 2022 – Aug 2024",
+          tags: ["sql", "python", "etl", "mysql", "kpi", "dashboard", "jenkins", "ci/cd", "linux", "sharepoint", "automation", "reporting", "stakeholder"],
+          bullets: [
+            "Owned ~80% of team deliverables for an 8-member engineering group; improved CI/CD reliability with Linux and Jenkins and cut deployment delays by 30%.",
+            "Developed Python automation for log rotation, health checks, and environment provisioning — reducing manual effort by ~40% across release cycles.",
+            "Wrote and optimized MySQL SQL queries for log analysis, data extraction, and ETL workflows, identifying defect patterns across 10+ release cycles.",
+            "Built Python monitoring utilities to parse application logs, aggregate error metrics, and generate daily summary reports for engineering leads.",
+            "Created SQL-driven KPI dashboards and ad-hoc reports tracking deployment frequency, failure rates, and SLA compliance across 3 cross-functional teams.",
+            "Automated SharePoint documentation workflows with Python, reducing sync lag and keeping version-controlled records for 5+ teams.",
+            "Developed shell scripts integrated with Jenkins pipelines for pre/post-deployment validation, reducing rollbacks and improving deployment success."
+          ]
+        },
+        {
+          title: "SCADA Engineer / Data Analyst",
+          company: "Total Automation Solutions — Pune, India",
+          dates: "May 2021 – Jan 2022",
+          tags: ["sql", "power bi", "dashboard", "iot", "scada", "reporting", "kpi", "automation", "data analysis"],
+          bullets: [
+            "Delivered 80% of implementation for an IoT gas monitoring system across 8 sites (pressure, temperature, flow).",
+            "Collected and stored real-time sensor data in a structured SQL database for historical trend analysis, maintenance scheduling, and compliance reporting.",
+            "Wrote SQL to extract and aggregate time-series sensor data, flagging anomalies and threshold breaches for proactive maintenance.",
+            "Built 3 Power BI dashboards connected to the SCADA SQL database to visualize real-time and historical gas-flow KPIs for operations managers.",
+            "Designed Power BI reports on device uptime, alert frequency, and sensor drift to prioritize field maintenance and improve automation reliability."
+          ]
+        },
+        {
+          title: "Intern",
+          company: "Bharat Heavy Electricals Limited (BHEL) — Hyderabad, India",
+          dates: "Apr 2019 – Jun 2019",
+          tags: ["plc", "automation", "iot"],
+          bullets: [
+            "Integrated PLCs with CNC machines; gained hands-on exposure to PLC programming, machine interfacing, and industrial automation workflows."
+          ]
+        }
+      ],
+      projects: [
+        {
+          title: "Urban Air Quality Analysis — GCP & Big Data",
+          tags: ["gcp", "sql", "hadoop", "big data", "data analysis", "visualization"],
+          bullets: [
+            "Processed 500K+ EPA Daily AQI records for 2024 across 15 U.S. metro regions on Google Cloud Platform (Dataproc, Cloud Storage, Hadoop/HDFS).",
+            "Cleaned and transformed raw AQI data with SQL; visualized seasonal pollution spikes and high-risk metros for technical and non-technical audiences."
+          ]
+        },
+        {
+          title: "Educational Diversity Analysis — Tableau",
+          tags: ["tableau", "dashboard", "data analysis", "visualization", "stakeholder"],
+          bullets: [
+            "Analyzed educational and demographic datasets across 50+ U.S. states to surface racial representation gaps and diversity trends.",
+            "Built interactive Tableau dashboards and written summaries tailored for non-technical stakeholders."
+          ]
+        },
+        {
+          title: "Automatic Track Switching System — IoT",
+          tags: ["iot", "automation"],
+          bullets: [
+            "Developed an IoT railway track switching system using sensors and microcontrollers with real-time monitoring and control logic."
+          ]
+        },
+        {
+          title: "Website Development — Capstone",
+          tags: ["html", "css", "javascript", "php"],
+          bullets: [
+            "Designed and deployed a full-stack site with PHP, HTML, and CSS including registration, secure login, and a contact form."
+          ]
+        }
+      ],
+      education: [
+        "University of North Texas — Denton, TX\nMaster of Science – Information Science | May 2026",
+        "GITAM University — Visakhapatnam, India\nBachelor of Technology – Electronics and Communication Engineering | May 2020"
+      ]
+    };
 
     resumeEl.value = DEFAULT_RESUME;
     scoreRing.style.strokeDasharray = String(CIRC);
     scoreRing.style.strokeDashoffset = String(CIRC);
+
+    let toastTimer = null;
+    function showToast(message) {
+      toastEl.textContent = message;
+      toastEl.classList.add("visible");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toastEl.classList.remove("visible"), 2200);
+    }
 
     function normalize(text) {
       return text
@@ -1010,13 +1211,214 @@ Preferred
       });
     }
 
+    function detectTargetTitle(jd, jdNorm) {
+      for (const role of ROLE_TERMS) {
+        if (containsPhrase(jdNorm, role)) return formatLabel(role);
+      }
+      const firstLine = jd.split(/\n/).map((l) => l.trim()).find((l) => l.length > 3 && l.length < 80);
+      if (firstLine && !/about the role|responsibilities|requirements|job description/i.test(firstLine)) {
+        return firstLine.replace(/^job title[:\s-]*/i, "").trim();
+      }
+      return "Data Analyst";
+    }
+
+    function skillMentionedInJd(skill, jdNorm) {
+      const variants = [
+        skill.toLowerCase(),
+        skill.toLowerCase().replace(/\(.*?\)/g, "").trim(),
+        skill.toLowerCase().replace(/\//g, " "),
+        ...skill.toLowerCase().split(/[\/,()]/).map((s) => s.trim()).filter((s) => s.length > 2)
+      ];
+      return variants.some((v) => v && containsPhrase(jdNorm, v));
+    }
+
+    function scoreBullet(bullet, jdNorm, keywords) {
+      const b = normalize(bullet);
+      let score = 0;
+      for (const kw of keywords) {
+        if (containsPhrase(b, kw)) score += Math.max(2, kw.length / 4);
+      }
+      // Boost action-oriented analytics language common in JDs
+      ["sql", "python", "dashboard", "etl", "kpi", "tableau", "power bi", "stakeholder", "automat"].forEach((t) => {
+        if (containsPhrase(jdNorm, t) && containsPhrase(b, t)) score += 1.5;
+      });
+      return score;
+    }
+
+    function buildTailoredSkills(jdNorm, matched) {
+      const prioritized = [];
+      const seen = new Set();
+      const add = (label) => {
+        const key = label.toLowerCase();
+        if (seen.has(key)) return;
+        seen.add(key);
+        prioritized.push(label);
+      };
+
+      // JD-matched skills first (using profile inventory only — never invent skills)
+      Object.values(RESUME_PROFILE.skillGroups).flat().forEach((skill) => {
+        if (skillMentionedInJd(skill, jdNorm)) add(skill);
+      });
+      matched.forEach((kw) => {
+        const label = formatLabel(kw);
+        // Only add if it appears somewhere in the default resume / profile
+        const inProfile = Object.values(RESUME_PROFILE.skillGroups).flat().some((s) => normalize(s).includes(kw) || kw.includes(normalize(s).split(" ")[0]));
+        const inResume = containsPhrase(normalize(DEFAULT_RESUME), kw);
+        if (inProfile || inResume) add(label);
+      });
+
+      const groups = {};
+      for (const [cat, skills] of Object.entries(RESUME_PROFILE.skillGroups)) {
+        const ordered = [
+          ...skills.filter((s) => skillMentionedInJd(s, jdNorm)),
+          ...skills.filter((s) => !skillMentionedInJd(s, jdNorm))
+        ];
+        // Keep category lean: JD hits first, then a few supporting skills
+        const jdHits = ordered.filter((s) => skillMentionedInJd(s, jdNorm));
+        const rest = ordered.filter((s) => !skillMentionedInJd(s, jdNorm)).slice(0, Math.max(2, 5 - jdHits.length));
+        groups[cat] = [...jdHits, ...rest];
+      }
+      return { prioritized: prioritized.slice(0, 14), groups };
+    }
+
+    function rewriteBulletForJd(bullet, targetTitle, matchedLabels) {
+      let text = bullet;
+      // Light keyword mirroring only when the concept already exists
+      const swaps = [
+        [/ad-hoc reports/gi, "ad-hoc analysis and stakeholder reports"],
+        [/summary reports/gi, "actionable analytical reports"],
+        [/engineering leads/gi, "technical and business stakeholders"],
+        [/operations managers/gi, "cross-functional stakeholders"]
+      ];
+      for (const [re, rep] of swaps) {
+        if (re.test(text) && /stakeholder|report|communication/i.test(matchedLabels.join(" "))) {
+          text = text.replace(re, rep);
+        }
+      }
+      return text;
+    }
+
+    function generateTailoredResume(jd, jdNorm, keywords, matched, missing) {
+      const targetTitle = detectTargetTitle(jd, jdNorm);
+      const { prioritized, groups } = buildTailoredSkills(jdNorm, matched);
+      const skillLine = prioritized.length
+        ? prioritized.join(", ")
+        : "SQL, Python, Tableau, Power BI, Advanced Excel, ETL/ELT, KPI Dashboards";
+
+      const focusBits = prioritized.slice(0, 5);
+      const softBits = [];
+      if (containsPhrase(jdNorm, "stakeholder")) softBits.push("stakeholder reporting");
+      if (containsPhrase(jdNorm, "cross-functional") || containsPhrase(jdNorm, "collaborate")) softBits.push("cross-functional collaboration");
+      if (containsPhrase(jdNorm, "communication")) softBits.push("clear communication of insights");
+
+      const summary = [
+        `${targetTitle} with ${RESUME_PROFILE.years} years of IT experience and an ${RESUME_PROFILE.degree}, specializing in turning complex datasets into clear, actionable business insights.`,
+        `Proficient in ${skillLine} with hands-on experience supporting data extraction, transformation, dashboards, and decision-ready reporting.`,
+        softBits.length
+          ? `Experienced in ${softBits.join(", ")} for both technical teams and non-technical business audiences.`
+          : `Skilled in building interactive KPI dashboards and visualizations that communicate trends and anomalies to technical and non-technical stakeholders.`
+      ].join("\n");
+
+      const rankedJobs = RESUME_PROFILE.jobs
+        .map((job) => {
+          const bulletScores = job.bullets.map((b) => ({
+            text: rewriteBulletForJd(b, targetTitle, matched.map(formatLabel)),
+            score: scoreBullet(b, jdNorm, keywords) + job.tags.reduce((a, t) => a + (containsPhrase(jdNorm, t) ? 2 : 0), 0)
+          }));
+          bulletScores.sort((a, b) => b.score - a.score);
+          const tagBoost = job.tags.reduce((a, t) => a + (containsPhrase(jdNorm, t) ? 3 : 0), 0);
+          return {
+            ...job,
+            displayTitle: job.title,
+            bullets: bulletScores.filter((b) => b.score > 0 || bulletScores.length <= 3).slice(0, Math.min(5, bulletScores.length)),
+            rank: tagBoost + bulletScores.slice(0, 3).reduce((a, b) => a + b.score, 0)
+          };
+        })
+        .sort((a, b) => b.rank - a.rank);
+
+      // Keep chronological integrity for employment — reorder bullets only, keep timeline order
+      const jobsInTimeline = RESUME_PROFILE.jobs.map((orig) => {
+        const ranked = rankedJobs.find((j) => j.company === orig.company);
+        return ranked || orig;
+      });
+
+      const rankedProjects = RESUME_PROFILE.projects
+        .map((p) => ({
+          ...p,
+          rank: p.tags.reduce((a, t) => a + (containsPhrase(jdNorm, t) ? 4 : 0), 0)
+            + p.bullets.reduce((a, b) => a + scoreBullet(b, jdNorm, keywords), 0)
+        }))
+        .sort((a, b) => b.rank - a.rank)
+        .slice(0, 3);
+
+      const skillBlock = Object.entries(groups)
+        .map(([cat, skills]) => `${cat}: ${skills.join(", ")}`)
+        .join("\n");
+
+      // Honest keyword bridge: only mention missing terms if they already exist under a synonym in profile
+      const recoverable = missing
+        .map(formatLabel)
+        .filter((label) => {
+          const n = normalize(label);
+          return Object.values(RESUME_PROFILE.skillGroups).flat().some((s) => {
+            const sn = normalize(s);
+            return sn.includes(n) || n.includes(sn.split(" ")[0]) || sn.replace(/[^a-z0-9]/g, "").includes(n.replace(/[^a-z0-9]/g, ""));
+          });
+        })
+        .slice(0, 6);
+
+      const keywordBridge = recoverable.length
+        ? `\nCore Keywords for ATS\n${[...new Set([...prioritized.slice(0, 10), ...recoverable])].join(" · ")}\n`
+        : `\nCore Keywords for ATS\n${prioritized.slice(0, 12).join(" · ")}\n`;
+
+      const jobBlocks = jobsInTimeline.map((job) => {
+        const bullets = (job.bullets || []).map((b) => `• ${b.text || b}`).join("\n");
+        return `${job.displayTitle || job.title}\n${job.company}\n${job.dates}\n${bullets}`;
+      }).join("\n\n");
+
+      const projectBlocks = rankedProjects.map((p) => {
+        const bullets = p.bullets.map((b) => `• ${b}`).join("\n");
+        return `${p.title}\n${bullets}`;
+      }).join("\n\n");
+
+      const text = `${RESUME_PROFILE.name}
+${RESUME_PROFILE.contact}
+Target Role: ${targetTitle}
+
+Professional Summary
+${summary}
+${keywordBridge}
+Technical Skills
+${skillBlock}
+
+Certifications: ${RESUME_PROFILE.certifications.join("; ")}
+
+Professional Experience
+${jobBlocks}
+
+Projects
+${projectBlocks}
+
+Education
+${RESUME_PROFILE.education.join("\n\n")}`;
+
+      return { text, targetTitle, prioritized };
+    }
+
+    function scoreTextAgainstJd(text, jdNorm, keywords) {
+      const resumeNorm = normalize(text);
+      const { matched, missing } = scoreMatch(resumeNorm, keywords);
+      const keywordScore = keywords.length ? Math.round((matched.length / keywords.length) * 100) : 0;
+      return { matched, missing, keywordScore };
+    }
+
     function analyze() {
       const jd = jdEl.value.trim();
       const resume = resumeEl.value.trim();
       errorEl.classList.remove("visible");
 
       if (!jd) {
-        errorEl.textContent = "Paste a job description to calculate an ATS score.";
+        errorEl.textContent = "Paste a job description to calculate an ATS score and tailored resume.";
         errorEl.classList.add("visible");
         return;
       }
@@ -1035,7 +1437,6 @@ Preferred
       const resumeNorm = normalize(resume);
       let keywords = dedupeOverlaps(extractKeywords(jdNorm));
 
-      // If lexicon found too few, fall back to significant JD nouns/tokens
       if (keywords.length < 6) {
         const extras = [...new Set(jdNorm.split(" ").filter((t) => t.length > 4 && !STOP.has(t)))].slice(0, 20);
         keywords = dedupeOverlaps([...keywords, ...extras]);
@@ -1064,14 +1465,18 @@ Preferred
       const overall = Math.round(parts.reduce((a, p) => a + p.s * p.w, 0) / totalW);
 
       const verdict = verdictFor(overall);
+      const tailored = generateTailoredResume(jd, jdNorm, keywords, matched, missing);
+      const tailoredScore = scoreTextAgainstJd(tailored.text, jdNorm, keywords);
 
       emptyEl.style.display = "none";
       resultsEl.classList.add("visible");
+      tailoredSection.hidden = false;
 
       scoreNumber.textContent = String(overall);
       scoreVerdict.textContent = verdict.title;
       scoreVerdict.style.color = verdict.color;
-      scoreSummary.textContent = `${verdict.blurb} Matched ${matched.length} of ${keywords.length} keywords.`;
+      scoreSummary.textContent = `${verdict.blurb} Original resume matched ${matched.length} of ${keywords.length} keywords.`;
+      tailoredScoreNote.textContent = `Tailored draft keyword coverage: ${tailoredScore.keywordScore}% (${tailoredScore.matched.length}/${keywords.length}).`;
       scoreRing.style.stroke = verdict.color;
       scoreRing.style.strokeDashoffset = String(CIRC * (1 - overall / 100));
 
@@ -1081,20 +1486,26 @@ Preferred
         { name: "Role / title terms", score: roleCat.score },
         { name: "Soft skills", score: softCat.score },
         { name: "Years alignment", score: years.score },
-        { name: "Education fit", score: education.score }
+        { name: "Education fit", score: education.score },
+        { name: "Tailored draft keywords", score: tailoredScore.keywordScore }
       ]);
 
       renderChips(matchedChips, matched.slice(0, 24), "match");
       renderChips(missingChips, missing.slice(0, 24), "miss");
 
       tipsList.innerHTML = "";
-      buildTips(overall, missing, years, education, skillsCat).forEach((tip) => {
+      const tips = buildTips(overall, missing, years, education, skillsCat);
+      tips.unshift(`A tailored resume for “${tailored.targetTitle}” is ready below — copy or download it, then review for accuracy.`);
+      tips.forEach((tip) => {
         const li = document.createElement("li");
         li.textContent = tip;
         tipsList.appendChild(li);
       });
 
-      resultsEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      tailoredResumeEl.value = tailored.text;
+      tailoredMeta.textContent = `Target: ${tailored.targetTitle} · ${tailored.prioritized.length} prioritized skills`;
+
+      tailoredSection.scrollIntoView({ behavior: "smooth", block: "start" });
     }
 
     document.getElementById("scoreBtn").addEventListener("click", analyze);
@@ -1107,12 +1518,45 @@ Preferred
       jdEl.value = "";
       errorEl.classList.remove("visible");
       resultsEl.classList.remove("visible");
+      tailoredSection.hidden = true;
+      tailoredResumeEl.value = "";
+      tailoredScoreNote.textContent = "";
       emptyEl.style.display = "block";
       scoreRing.style.strokeDashoffset = String(CIRC);
       scoreNumber.textContent = "0";
     });
     document.getElementById("resetResumeBtn").addEventListener("click", () => {
       resumeEl.value = DEFAULT_RESUME;
+    });
+    document.getElementById("copyTailoredBtn").addEventListener("click", async () => {
+      const text = tailoredResumeEl.value;
+      if (!text) return;
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast("Tailored resume copied");
+      } catch {
+        tailoredResumeEl.select();
+        document.execCommand("copy");
+        showToast("Tailored resume copied");
+      }
+    });
+    document.getElementById("downloadTailoredBtn").addEventListener("click", () => {
+      const text = tailoredResumeEl.value;
+      if (!text) return;
+      const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "Ravi_Kumar_Guttula_Tailored_Resume.txt";
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast("Download started");
+    });
+    document.getElementById("useTailoredBtn").addEventListener("click", () => {
+      if (!tailoredResumeEl.value) return;
+      resumeEl.value = tailoredResumeEl.value;
+      showToast("Loaded into resume input — re-score to compare");
+      resumeEl.scrollIntoView({ behavior: "smooth", block: "center" });
     });
 
     jdEl.addEventListener("keydown", (e) => {
